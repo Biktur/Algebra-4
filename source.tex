@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{mathtools, amssymb, amsfonts, amsthm}
+\usepackage{tikz-cd}
+
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{definition}{Определение}
+\newtheorem*{proposition}{Предложение}
+
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\im}{Im}
+
+\title{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Ленг. Алгебра
+Конспект Степанова
+Представления и характеры конечных групп
+
+\begin{theorem}[Бёрнсайд]
+Группа порядка $p^nq^m$ разрешима.
+\end{theorem}
+
+\begin{theorem}[Машке]
+$k$ --- поле, $G$ --- группа, $\chr k \nmid |G|$, $V$ --- $k[G]$-модуль, $u$ -- подмодуль. Тогда найдётся подмодуль $W$, т. ч.  $V = U \oplus W$.
+\end{theorem}
+
+\begin{definition}
+Неприводимый $G$-модуль --- простой $k[G]$-модуль.
+\end{definition}
+
+\begin{definition}
+Неразложимый --- если $M = M_1 \oplus M_2$, то  $M_1$ или $M_2$ тривиален.
+\end{definition}
+
+Везде далее $V$ --- конечномерное векторное пространство над $k$, а $\chr k \nmid |G|$.
+
+Из конечномерноссти, разлоожение в прямую сумму неприводимых, очевидно существует, хотим доказать единственность.
+
+\begin{theorem}[Шур]
+Пусть $M, N$ --- простые $R$-модули. Тогда
+\begin{enumerate}
+\item Любой гомоморфизм $M \rightarrow^\phi N$ либо тривиален, либо является изоморфизмом.
+\item $\End_k(M)$ --- тело*.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Пусть $\phi$ не изоморфизм. Тогда либо $\ker \phi \neq 0$, либо $\im \phi \neq N$. В первом случае $\ker \phi = M$, во втором --- $\im \phi = 0$, т. е. $\phi = 0$.
+\item Ну действительно, любой ненулевой элемент --- изоморфизм, а значит обратим.
+\end{enumerate}
+\end{proof}
+Вернёмся к доказательству единственности.
+	Пусть $V \simeq M_1^{r_1} \oplus M_2^{r_2} \oplus \ldots \oplus M_k^{r_k}$ и $V \simeq N_1^{s_1} \oplus N_2^{s_2} \oplus \ldots \oplus N_l^{s_l}$, где $M_i \not \simeq M_j$ и $N_i \not \simeq N_j$ при разлчиных $i, j$.
+
+	Пусть $M_i \not \simeq N_j$. Тогда гомоморфизм $M_i^{r_i} \rightarrow^\phi N_j^{r_j}$ определённый понятным образом, тривиален. 
+
+	Пусть теперь $M_i \simeq N_j$. Из вышесказанного $\phi$, очевидно, инъективен, но так же определено и отображение в обратну сторону, но тогда размернсти $M_i^{r_i}$ и $N_j^{s_j}$ совпадают, в частности, из соображений размерности $r_i = s_j$.
+
+\begin{definition}
+Кольцо $R$ называется $k$-алгеброй. Если $R$ - векторное пространоство над $k$, причём $\lambda(xy) = (\lambda x)y = x(\lambda y)$.
+\end{definition}
+
+Из теоремы выше,
+
+	$k[G] \simeq L_1^{r_1} \oplus L_2^{r_2} \oplus \ldots \oplus L_n^{r_n}$, $L_i$ --- простые и $L_i \not \simeq L_j$, при $i \neq j$.
+
+\begin{proposition} %Утверждение
+Пусть $L$ --- простой идеал в $R$. $M$ --- простой модуль. Тогда если $L \not \simeq M$, то $LM = 0$.
+\end{proposition}
+	\begin{proof}
+	для любого $m$ определено отображение $l \mapsto m$. По лемме Шура, все такие отображения тривиальны, т. е. $LM = 0$.
+	\end{proof}
+
+	Пусть $1 = e_1 + e_2 + \ldots + e_m$, где $e_i \in L_i^{r_i}$. Отсюда сразу же 
+$e_ie_j = 0$ при $i \neq j$, и $e_i^2 = e_i$. Кроме того, очевидно, $e_i \in Z(k[G])$.
+Если $a_1e_1 + a_2e_2 + \ldots + a_ne_n = 0$, домножая на $e_i$ получаем $a_i = 0$. Значит $m \leq \dim_kZ(k[G])$.
+\begin{theorem}
+Пусть $M$ --- простой $G$-модуль. Тогда для какого-то $i$, $L_i \simeq M$.
+\end{theorem}
+	\begin{proof}
+	для какого-то $i$, $L_iM \neq 0$. Отсюда $L_i \simeq M$.
+	\end{proof}
+
+Для $g \in G$ рассмотрим $K_g = \{hgh^{-1} \mid h \in G\}$.
+Обозначим $\hat{K}_g = \sum_{\sigma \in K_g}\sigma$.
+\begin{theorem}
+$\{\hat{K}_g\}_{g \in I}$, где $I$ --- множество представителей классов сопряжённости, сосатвляют базис $Z(k[G])$.
+\end{theorem}
+$\hat{K}_g$, очевидно, лежит в центре при любом $g \in G$. С другой стороны, если
+	$x = \sum_\sigma a_\sigma \sigma \in Z(k[G])$,
+	$x = \sum_\sigma a_\sigma \tau \sigma \tau^{-1}$.
+
+\end{document}
+
