@@ -4,15 +4,18 @@
 \usepackage{hyperref}
 \usepackage{mathtools, amssymb, amsfonts, amsthm}
 \usepackage{tikz-cd}
+\usepackage{tikz}
 
 \newtheorem*{theorem}{Теорема}
 \newtheorem*{lemma}{Лемма}
+\newtheorem*{statement}{Утверждение}
 \newtheorem*{proposition}{Предложение}
 \theoremstyle{definition}
 \newtheorem*{definition}{Определение}
 \theoremstyle{remark}
 \newtheorem*{remark}{Замечание}
 \newtheorem*{example}{Пример}
+\newtheorem*{problem}{Задача}
 
 \DeclareMathOperator{\chr}{char}
 \DeclareMathOperator{\End}{End}
@@ -21,6 +24,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
 
 \newcommand{\Ra}{\Rightarrow}
 \renewcommand{\iff}{\Leftrightarrow}
@@ -253,6 +257,131 @@ $x = \sum\limits_{\sigma \in G} a_\sigma \tau \sigma \tau^{-1}$, для любо
         \Tr(M \overset{\cdot g}{\to} M) = \Tr(M \overset{\sim}{\to} N \overset{\cdot g}{\to} N \overset{\sim}{\to} M) = A \Tr(N \overset{\cdot g}{\to} N) A^{-1} = \Tr(N \overset{\cdot g}{\to} N)
     \end{equation*}
 \end{proof}
+
+Т. к. представление --- это отображение $\rho: k[G] \rightarrow \End_k(V)$. Ествественно возникает следующее понятие:
+
+\begin{definition}
+	Характером представления $\rho$ называется гомоморфизм $\chi: k[G] \rightarrow k$, т. ч. $\chi(x) = \Tr(\rho(x))$.
+\end{definition}
+
+Пусть $k$ --- алгебраически замкнуто, $n = \ord(g)$, тогда $\rho(g)^n = 1$, т. е. $\prod\limits_{\zeta \in \mu_n(k)}(\rho(g) - \zeta I) = 0$, но тогда $V = \bigoplus\limits_{\zeta \in \mu_n(k)} V_{\zeta}$, где $V_{\zeta}$ --- собственные подпространства.
+
+\begin{equation*}
+\rho(g) = 
+\begin{pmatrix}
+\zeta_{i_1} & 0 & 0 & \ldots & 0 \\ 
+0 & \zeta_{i_2} & 0 & \ldots & 0 \\
+0 & 0 & \zeta_{i_3} & \ldots & 0 \\
+\ldots & \ldots & \ldots & \ldots & \ldots \\
+0 & 0 & 0 & \ldots & \zeta_{i_d}
+\end{pmatrix}
+\end{equation*}
+
+\begin{example}
+Если $k = \C$, получаем $|\chi(g)| \le d$, причём равенство достигается тогда и только тогда, когда $\rho(g)$ --- скалярная.
+\end{example}
+
+\begin{statement}
+Если $k = \C$, $\chi(g^{-1}) = \overline{\chi(g)}$.
+\end{statement}
+\begin{proof}
+Ну действительно, $\zeta^{-1} = \bar{\zeta}$.
+\end{proof}
+
+\begin{statement}
+Характеры изоморфных представлений равны.
+\end{statement}
+\begin{proof}
+\begin{equation*}
+\begin{tikzcd}
+V_1 \dar{\rho_1(g)} \rar{F} & V_2 \dar{\rho_2(g)} \\
+V_1 \rar{F} & V_2 
+\end{tikzcd}
+\end{equation*}
+$\Tr(\rho_1(g)) = \Tr(F^{-1} \circ \rho_2(g) \circ F) = \Tr(\rho_2(g))$
+\end{proof}
+
+\begin{statement}
+Построенные ранее 3-мерные представления $S_4$ неизоморфны.
+\end{statement}
+\begin{proof} \quad
+
+\begin{center}
+\begin{tikzpicture}
+\coordinate [label=left:\textcolor{black}{$A$}]  (A) at (0, 0, 2);
+\coordinate [label=right:\textcolor{black}{$B$}] (B) at (2, 0, 2);
+\coordinate [label=right:\textcolor{black}{$C$}]  (C) at (2, 0, 0);
+\coordinate [label=left:\textcolor{black}{$D$}]  (D) at (0, 0, 0);
+\coordinate [label=left:\textcolor{black}{$c$}]  (c) at (0, 2, 2);
+\coordinate [label=right:\textcolor{black}{$d$}] (d) at (2, 2, 2);
+\coordinate [label=right:\textcolor{black}{$a$}]  (a) at (2, 2, 0);
+\coordinate [label=left:\textcolor{black}{$b$}]  (b) at (0, 2, 0);
+\draw[black] (A) -- (B) (B) -- (C) (a) -- (b) (b) -- (c) (c) -- (d) (d) -- (a) (A) -- (c) (B) -- (d) (C) -- (a);
+\draw[black, dashed] (D) -- (A) (C) -- (D) (D) -- (b);
+\draw[blue, dashed] (A) -- (a) (B) -- (b) (C) -- (c) (D) -- (d);
+\end{tikzpicture}
+\end{center}
+
+Поворот на $\frac \pi 2$ --- циклический сдвиг диагоналей
+\begin{equation*}
+\Tr
+\begin{pmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+= 1
+\end{equation*}
+Рассмотрим теперь второе представление.
+$U = \langle e_1, e_2, e_3, e_4\rangle$, $e_i \xrightarrow{g} e_{g(i)}$, $W = \langle e_1 - e_2, e_2 - e_3, e_3 - e_4 \rangle$
+Опять же рассмотрим как дейтсвует циклический сдвиг.
+\begin{equation*}
+\Tr
+\begin{pmatrix}
+0 & 0 & -1 \\
+1 & 0 & - 1 \\
+0 & 1 & -1
+\end{pmatrix}
+= -1
+\end{equation*}
+\end{proof}
+
+$k[G] = L_1^{d_1} \oplus L_2^{d_2} \oplus \ldots \oplus L_s^{d_s}$, $L_i \not\simeq L_j$ при $i \neq j$, $1 = e_1 + e_2 + \ldots + e_s$, и $e_i \in Z(k[G]).$
+\begin{proposition}
+Пусть $A = L_i^{d_i}$, тогда $A \simeq \End_A(A)^o$.
+\end{proposition}
+\begin{proof}
+Пусть $a \mapsto (x \mapsto xa)$, гомоморфность проверяется непосредственно. Инъективность очевидна. Пусть теперь $\phi$ --- эндоморфизм, тогда $\phi(x) = x\phi(1)$, положив $a = \phi(1)$, получаем искомое.
+\end{proof}
+
+\begin{lemma}
+$\End_A(L^d) \simeq M_d(D)$, где $D = End_A(L)$(как мы помним, из леммы Шура $D$ --- тело).
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+\begin{tikzcd}
+	L \rar{i_k} \ar[bend right = 20, dashed]{rrr}{\phi_{jk}} & L^d \rar{\varphi} & L^d \rar{\pi_j} & L 
+\end{tikzcd}
+\end{equation*}
+$\phi_{jk} = \pi_j \circ \phi \circ i_k$.
+	Определим $H: End_A(L^d) \rightarrow M_d(D): \phi \mapsto (\phi_{jk})$
+	Проверим гомоморфность $H(\phi) H(\psi) = \sum\limits_k \phi_{jk} \psi_{kl} = \sum\limits{} \pi_j \circ \phi \circ \psi \circ i_l = H(\phi \circ \psi)$.
+\end{proof}
+
+\begin{problem}
+Пусть $V_1$, $V_2$ --- $k[G]$-модули. Доказать, что
+\begin{enumerate}
+
+	\item отображение $v_1 \otimes v_2 \xmapsto{g} gv_1 \otimes gv_2$ задаёт на $V_1 \otimes_k V_2$ структуру $k[G]$-модуля.
+	\item $\chi_{V_1 \otimes V_2} = \chi_{V_1} \chi_{V_2}$
+\end{enumerate}
+\end{problem}
+\begin{problem}
+	Найти неприводимые представления $D_4$
+\end{problem}
+\begin{problem}
+	Найти неприводимые представления $Q_8$
+\end{problem}
 
 \end{document}
 
