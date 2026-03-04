@@ -7,6 +7,7 @@
 \usepackage{tikz}
 
 \newtheorem*{theorem}{Теорема}
+\newtheorem*{corollary}{Следствие}
 \newtheorem*{lemma}{Лемма}
 \newtheorem*{statement}{Утверждение}
 \newtheorem*{proposition}{Предложение}
@@ -15,7 +16,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Замечание}
 \newtheorem*{example}{Пример}
-\newtheorem*{problem}{Задача}
+\newtheorem{problem}{Задача}
 
 \DeclareMathOperator{\chr}{char}
 \DeclareMathOperator{\End}{End}
@@ -61,13 +62,13 @@ $k$ --- поле, $G$ --- конечная группа, $\chr k \nmid |G|$, $V$
 Модуль $M$ называется \textit{неразложимым}, если равенство $M = M_1 \oplus M_2$, означает, что $M_1$ или $M_2$ тривиален.
 \end{definition}
 
-Везде далее $V$ --- $k[G]$-модуль, который рассматривается как конечномерное векторное пространство над $k$ (стоит отметить, что $|G| = \dim V < \infty$), а также $\chr k \nmid |G|$. При таких условиях теорему Машке можно переформулировать следующим образом:
+Везде далее $V$ --- конечномерный(как векторное пространство над k) $k[G]$-модуль, а также $\chr k \nmid |G|$. В таких условиях, из теоремы Машке, получаем:
 
-\begin{theorem}[Машке]
-    $V$ --- приводимый модуль $\Ra$ $V = V' \oplus V''$, где $V', V'' \neq 0$.
-\end{theorem}
+\begin{corollary}
+     Если $V$ приводим, найдутся ненулевые подмодули $V', V''$, т. ч. $V = V' \oplus V''$.
+\end{corollary}
 
-Понятно, что размерности $V', V''$ как векторных пространств над $k$ строго меньше чем размерность $V$. Также понятно, что если $V'$ или $V''$ являются приводимыми, то к ним снова можно применить теорему. Таким образом, для всякого $G$-модуля $V$ получается разложение $V = V_1 \oplus V_2 \oplus \hdots \oplus V_m$, где $\{V_i\}$ --- неприводимые модули.
+Отсда, индукцией по размерности, сразу получаем существование разложения $V$ в сумму неприводимых.
 
 \begin{lemma}[Шур]
 Пусть $M, N$ --- простые $R$-модули. Тогда
@@ -76,13 +77,13 @@ $k$ --- поле, $G$ --- конечная группа, $\chr k \nmid |G|$, $V$
 \item $\End_k(M)$ --- тело (т. е. кольцо с делением).
 \end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof} \quad
 \begin{enumerate}
 \item Пусть $\varphi$ не изоморфизм. Тогда $\ker \varphi \neq 0$, или $\im \varphi \neq N$. В первом случае $\ker \varphi = M$, во втором --- $\im \varphi = 0$, т. е. $\varphi = 0$.
 \item Ну действительно, любой ненулевой элемент --- изоморфизм, а значит обратим.
 \end{enumerate}
 \end{proof}
-Вернёмся к доказательству единственности. Пусть $V \simeq M_1^{r_1} \oplus M_2^{r_2} \oplus \ldots \oplus M_k^{r_k}$ и $V \simeq N_1^{s_1} \oplus N_2^{s_2} \oplus \ldots \oplus N_l^{s_l}$, где $M_i \not \simeq M_j$ и $N_i \not \simeq N_j$ при разлчиных $i, j$.
+Рассмотрим теперь вопрос единственности. Пусть $V \simeq M_1^{r_1} \oplus M_2^{r_2} \oplus \ldots \oplus M_k^{r_k}$ и $V \simeq N_1^{s_1} \oplus N_2^{s_2} \oplus \ldots \oplus N_l^{s_l}$, где $M_i \not \simeq M_j$ и $N_i \not \simeq N_j$ при разлчиных $i, j$.
 
 Пусть $M_i \not \simeq N_j$. Тогда гомоморфизм $M_i^{r_i} \xrightarrow{\varphi} N_j^{r_j}$ определённый понятным образом, нулевой, по лемме Шура. 
 
@@ -383,5 +384,31 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 	Найти неприводимые представления $Q_8$
 \end{problem}
 
+\section*{Решения задач}
+
+\begin{proof}
+	Билинейность $(v_1, v_2) \mapsto gv_1 \otimes gv_2$ очеивдна, так что определен гомоморфизм, по определению $(g_1g_2)(v_1 \otimes v_2) = g_1(g_2(v_1 \otimes v_2))$. Остаётся доказать второе утверждение. Пусть $\{e_1, e_2, \ldots, e_n\}$ и $\{f_1, f_2, \ldots, f_m\}$ --- базисы $V_1$ и $V_2$, соответственно, и $g(e_i) = \sum_j a_{ji}e_j$, $g(f_i) = \sum_j b_{ji}f_j$. Тогда $g(e_i \otimes f_j) = (\sum_k a_{ki}e_k) \otimes (\sum_l b_{lj} f_l) = \sum_{k, l} a_{ki}b_{lj} e_k \otimes f_l$, т. е. $\chi_{V_1 \otimes_k V_2}(g) = \sum_{i, j} a_{ii} b_{jj} = (\sum_i a_{ii}) (\sum_j b_{jj}) = \chi_{V_1}(g) \chi_{V_2}(g)$.
+\end{proof}
+
+\begin{proof}
+	Пусть $n_1$ --- число неприводимых представлений размерности 1, $n_2$ --- размерности 2, т. к. $3^2 = 9 > 8$ других быть не может. Т. к. $n_1 + 4n_4 = 8$ классов смежности 2, 5или 8. 8 быть не может, т. к. группа не абелева. Если $\sigma$ --- поворот на $\frac \pi 2$, то $\{\sigma, \sigma^3\}$ и $\{\sigma^2\}$ --- классы смежности, значит классов смежности 5, т. е. существует 4 различных неприводимых одномерных представлений и 1 двумерное. Поймём как устроены гомоморфизмы $\varphi: D_4 \rightarrow \C^*$. Пусть $\sigma, \tau$ --- стандартные образующие. Докажем, что $\varphi(\sigma) = \pm 1$. Ну действительно, $\varphi(\sigma^3) = \varphi(\tau \sigma \tau) = \varphi(\tau)^2 \varphi(\sigma) = \varphi(\sigma)$. Тогда $\sigma \mapsto \pm 1$, $\tau \mapsto \pm 1$ --- все возможные гомоморфизмы. Найдём теперь двумерное. Ну, долго искать не придётся, это представление:
+\begin{equation*}
+\sigma \mapsto
+\begin{pmatrix}
+0 & -1 \\ 
+1 & 0
+\end{pmatrix}
+, \quad \tau \mapsto
+\begin{pmatrix}
+1 & 0 \\ 
+	0 & -1 
+\end{pmatrix}
+\end{equation*}
+У него, очеивдно нет инвариантных подпространств.
+\end{proof}
+
+
+
 \end{document}
+
 
