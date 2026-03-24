@@ -33,6 +33,7 @@
 
 \newcommand{\Ra}{\Rightarrow}
 \renewcommand{\iff}{\Leftrightarrow}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\C}{\mathbb{C}}
@@ -574,6 +575,125 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 \item $Q_8$.
 \end{itemize}
 \end{problem}
+
+\begin{remark}
+    Пусть $\chi_1, \chi_2$ --- неприводимые характеры. Обозначим
+    \begin{equation*}
+        \langle \chi_1, \chi_2 \rangle = \frac{1}{|G|} \sum_{\tau \in G} \chi_1(\tau) \chi_2(\tau^{-1}) = \begin{cases}
+            0, & \chi_1 \neq \chi_2 \\
+            1, & \chi_1 = \chi_2
+        \end{cases}
+    \end{equation*}
+\end{remark}
+
+\begin{remark}
+    Пусть $\chi$ --- характер некоторого представления. Тогда $\chi = \sum n_i \chi_i$, где $\chi_i$ --- (различные) неприводимые характеры, $n_i$ --- положительные целые числа. В таком случае
+    \begin{equation*}
+        \langle \chi, \chi \rangle = \left\langle \sum n_i \chi_i, \sum n_i \chi_i \right\rangle = \sum_{i, j} n_i n_j \langle \chi_i, \chi_j \rangle = \sum n_i^2
+    \end{equation*}
+    Таким образом, если $\langle \chi, \chi \rangle = 1$, то $\chi$ --- неприводимый характер.
+\end{remark}
+
+\begin{remark}
+    Вернёмся к рассмотрению $G = S_n$. Пусть $V$ --- векторное пространство, $\{e_1, \hdots, e_n\}$ --- его базис. Элементы $G$ действуют на $V$ перестановочно: $g(e_i) = e_{g(i)}$. Тогда, как мы уже выясняли при поиске представлений группы $S_4$,
+    \begin{equation*}
+        V = \langle e_1 + \hdots + e_n \rangle \oplus U, \quad U = \{ \sum \alpha_i e_i \,|\, \sum \alpha_i = 0 \}
+    \end{equation*}
+    Обозначим $V$ как представление за $\Phi$. Тогда $\chi_\Phi = \chi_1 + \tilde{\chi}$. Покажем, что $\tilde{\chi}$ --- неприводимый характер.
+\end{remark}
+
+\begin{proposition}
+    $\langle \chi_\Phi, \chi_\Phi \rangle = 2$.
+\end{proposition}
+
+\begin{remark}
+    Из этого утверждения следует, что $\tilde{\chi}$ не может раскладываться дальше в нетривиальную сумму неприводымых, а значит, сам является неприводимым, а значит, $U$ --- действительно неприводимое представление.
+\end{remark}
+
+\begin{proof}
+    Пусть $g \in G = S_n$. Обозначим за $N(g)$ количество $i \in \{1, \hdots, n\}$ таких, что $g(i) = i$. Поскольку $G$ --- это все перестановки, у всякого элемента $\{1, \hdots, n\}$ орбитой под действием $G$ является всё это множество, то есть всего орбит ровно одна. Тогда, по лемме Бернсайда,
+    \begin{equation*}
+        \sum_{g \in S_n} N(g) = 1 \cdot |S_n| = n!
+    \end{equation*}
+
+    Обозначим $G_i = \{ g\in G \,|\, g(i) = i \} \subset G$. Для удобства рассмотрим $G_n$ --- эта подгруппа действует перстановками на $\{1, \hdots, n-1\}$. Аналогично, для $g \in G_n$ обозначим за $N'(g)$ количество $i \in \{1, \hdots, n-1\}$ таких, что $g(i) = i$. Из определений очевидно, что $N'(g) = N(g) - 1$.
+
+    Опять же, по лемме Бернсайда,
+    \begin{equation*}
+        \sum_{g \in G_n} N'(g) = \sum_{g \in G_n} (N(g) - 1) = |G_n| \Ra \sum_{g \in G_n} N(g) = 2 \cdot |G_n| = 2 \cdot (n-1)!
+    \end{equation*}
+    Аналогичное равенство верно для всякой подгруппы $G_i$.
+    \begin{equation*}
+        \sum_{i = 1}^{n} \sum_{g \in G_i} N(g) = 2 \sum_{i = 1}^{n} |G_i| = 2 \cdot n \cdot |G_i| = 2 \cdot n \cdot (n-1)! = 2 \cdot n! = 2 \cdot |G|
+    \end{equation*}
+    Внимательно рассмотрим двойную сумму в левой части равенства. $g \in G_i$ по определению означает, что $g(i) = i$. Тогда, как следует из определения $N(g)$, для всякого элемента $g \in G$ условие $g \in G_i$ выполнено в точности для $N(g)$ разных $G_i$. Значит, в двойной сумме каждый элемент $g$ был учтён $N(g)$ раз. Таким образом, эту двойную сумму можно переписать как
+    \begin{equation*}
+        \sum_{i = 1}^{n} \sum_{g \in G_i} N(g) = \sum_{g \in \bigcup G_i} N(g) \cdot N(g) = \sum_{g \in \bigcup G_i} N(g)^2 = 2 |G|
+    \end{equation*}
+    Заметим, что несмотря на то, что $\bigcup G_i \neq G$, если $g \notin \bigcup G_i$, то $N(g) = 0$, а значит, суммировать можно и по всей группе $G$:
+    \begin{equation*}
+        \sum_{g \in G} N(g)^2 = 2 |G| \Ra \frac{1}{|G|} \sum_{g \in G} N(g)^2 = 2
+    \end{equation*}
+
+    Вернёмся к $\chi_\Phi$. Умножение на $g \in G$ действует на $V$ перестановкой базисных векторов, значит, матрица этого умножения --- это единичная матрица с переставленными соответствующим образом столбцами. Но тогда след этой матрицы (то есть $\chi_\Phi(g)$) равен количеству единиц на диагонали, а они соответствуют неподвижным при умножении $g$ базисным элементам, то есть $i$ таким, что $g(i) = i$. Итого, $\chi_\Phi(g) = N(g)$. Дополнительно отметим, что $N(g) = N(g^{-1})$.
+    \begin{equation*}
+        \langle \chi_\Phi, \chi_\Phi \rangle = \frac{1}{|G|} \sum_{g \in G} \chi_\Phi(g) \chi_\Phi(g^{-1}) = \frac{1}{|G|} \sum_{g \in G} N(g)^2 = 2
+    \end{equation*}
+\end{proof}
+
+\begin{remark}
+    Пусть $G, H$ --- конечные группы, $U$ --- $G$-модуль с характером $\chi$, $V$ --- $H$-модуль с характером $\rho$. Тогда на $U \otimes_k V$ можно задать структуру $G \times H$-модуля используя линейность и следующую формулу: $(g, h) \cdot (u \otimes v) = g(u) \otimes h(v)$.
+\end{remark}
+
+\begin{problem}
+    Доказать, что эта формула действительно задаёт структуру $G \times H$-модуля на $U \otimes_k V$.
+\end{problem}
+
+\begin{remark}
+    Обозначим характер $U \otimes_k V$ как $\chi \boxtimes \rho$.
+\end{remark}
+
+\begin{problem}
+    Доказать, что $(\chi \boxtimes \rho)(g, h) = \chi(g) \cdot \rho(h)$.
+\end{problem}
+
+\begin{remark}
+    \begin{align*}
+        \langle \chi_1 \boxtimes \rho_1, \chi_2 \boxtimes \rho_2 \rangle &= \frac{1}{|G \times H|} \sum_{(g, h) \in G \times H} (\chi_1 \boxtimes \rho_1)(g, h) \cdot (\chi_2 \boxtimes \rho_2)(g^{-1}, h^{-1}) \\
+        &= \frac{1}{|G| \cdot |H|} \sum_{(g, h) \in G \times H} \chi_1(g) \rho_1(h) \chi_2(g^{-1}) \rho_2(h^{-1}) \\
+        &= \frac{1}{|G| \cdot |H|} \left( \sum_{g \in G} \chi_1(g) \chi_2(g^{-1}) \right) \left( \sum_{h \in H} \rho_1(h) \rho_2(h^{-1}) \right) \\
+        &= \langle \chi_1, \chi_2 \rangle \langle \rho_1, \rho_2 \rangle
+    \end{align*}
+
+    В частности, $\langle \chi \boxtimes \rho \rangle = \langle \chi, \chi \rangle \langle \rho, \rho \rangle$. Таким образом, если $\chi, \rho$ --- неприводимые характеры, то их скалярные квадраты равны 1, тогда
+    \begin{equation*}
+        \langle \chi \boxtimes \rho \rangle = \langle \chi, \chi \rangle \langle \rho, \rho \rangle = 1 \cdot 1 = 1
+    \end{equation*}
+    а значит, $\chi \boxtimes \rho$ --- тоже неприводимый характер.
+\end{remark}
+
+
+\begin{remark}
+    Пусть $G_1, G_2$ --- группы, $k[G_1], k[G_2]$ --- соответствующие групповые кольца, причём $k[G_1] \simeq k[G_2]$. Вообще говворя, из этого не следует, что $G_1 \simeq G_2$: например, если $G_1, G_2$ --- различные абелевы группы порядка $n$, то $k[G_1] \simeq k[G_2] \simeq k^{|G|} = k^n$.
+
+    Однако, если наложить дополнительные ограничения, то такой вывод сделать можно: оказывается, например, что если $G_1, G_2$ абелевы, то $\Z[G_1] \simeq \Z[G_2] \Ra G_1 \simeq G_2$.
+\end{remark}
+
+\begin{theorem}
+    Пусть $G$ --- конечная абелева группа, $a \in \Z[G]^*$, $\ord(a) < +\infty$. Тогда $a = \pm g$, где $g \in G$.
+\end{theorem}
+
+\begin{remark}
+    После докажем $\Z[G_1] \simeq \Z[G_2] \Ra \Z[G_1]^* \simeq \Z[G_2]^*$. Из этого и теоремы будет следовать $G_1 \times \Z / 2\Z \simeq G_2 \times \Z / 2\Z$, из чего $G_1 \simeq G_2$.
+\end{remark}
+
+\begin{remark}
+    Заметим, что требование $\ord(a) < +\infty$ в теореме существенно. Пусть $G = \mu_7 = \langle x \rangle$. Тогда
+    \begin{equation*}
+        (-1 + 2x - x^2 - x^5 + 2x^6) \cdot (-3 + x + 3x^2 - 2x^3 - 2x^4 + 3x^5 + x^6) = 1
+    \end{equation*}
+    то есть эти элементы принадлежат $\Z[G]^*$, и при этом не имеют вид $\pm g$, $g \in G$.
+\end{remark}
 
 \section*{Решения задач}
 
