@@ -682,6 +682,9 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 \begin{theorem}
     Пусть $G$ --- конечная абелева группа, $a \in \Z[G]^*$, $\ord(a) < +\infty$. Тогда $a = \pm g$, где $g \in G$.
 \end{theorem}
+\begin{proof}
+	$\C[G] \simeq \C^{\oplus n}$, пусть $\{e_i\}_{i = 1}^n$ --- центральные идемпотентны. Пусть $a = \sum\limits_{\sigma \in G} \alpha_\sigma \sigma = \sum\limits_{i = 1}^n \beta_i e_i$, но у $a$ конечный порядок, обозначим его $m$, а значит $\beta_i^m = 1$. Пусть $\tau$ --- произвольный элемент группы, т. ч. $a_\tau \neq 0$. $\sum\limits_{\sigma \in G} a_\sigma \sigma \tau^{-1}  = \sum\limits_{i = 1}^n \beta_i e_i \tau^{-1}$. Применив регулярный характер, получаем $na_\tau = \sum\limits_{i = 1}^n \beta_i \tau^{-1} \chi_{reg}(e_i\tau^{-1}) = \sum\limits_{i = 1}^n \beta_i \chi_i(\tau^{-1})$. Но $|\beta_i \chi_i(\tau^{-1})| =  1$, значит $\beta_i \chi_i(\tau^{-1}) = \beta_j \chi_j(\tau^{-1}) = a_\tau = \pm 1$, т. е. $\beta_i = \pm \chi_i(\tau)$(знак не зависит от $i$). Т. е., т. к. $\{e_i\}$ --- базис, $a = \pm \tau$.
+\end{proof}
 
 \begin{remark}
     После докажем $\Z[G_1] \simeq \Z[G_2] \Ra \Z[G_1]^* \simeq \Z[G_2]^*$. Из этого и теоремы будет следовать $G_1 \times \Z / 2\Z \simeq G_2 \times \Z / 2\Z$, из чего $G_1 \simeq G_2$.
@@ -695,6 +698,42 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
     то есть эти элементы принадлежат $\Z[G]^*$, и при этом не имеют вид $\pm g$, $g \in G$.
 \end{remark}
 
+\begin{theorem}
+Если $G_1, G_2$ --- конечные абелевы группы и $\Z[G_1] \simeq \Z[G_2]$, то $G_1 \simeq G_2$
+\end{theorem}
+
+\begin{lemma}
+$A$ --- коммутативное кольцо, $M$ --- конечнопорождённый модуль над $A$, $\varphi \in \End_A(M)$, тогда $\phi$ --- корень унитального многочлена.
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+\begin{tikzcd}
+A^n \rar{\tilde{\varphi}} \dar & A^n \dar \\
+M \rar{\varphi} & M
+\end{tikzcd}
+\end{equation*}
+$\tilde{\varphi}$ обнуляется своим характеристическим, значит и $\varphi$ обнуляется.
+\end{proof}
+\begin{theorem}
+$k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d$ --- степень неприводимого представления, тогда $d | n$.
+\end{theorem}
+\begin{proof}
+	$\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau$, пусть $r = \frac{n}{d_i}$. Умножим на $e_i$. $\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau e_i$. Рассмотрим теперь абелеву группу $A$, порождённую $\zeta_n^k \sigma e_i$. Рассмотрим в $A$ эндоморфизм умножение на $r$. Поймём для начала, почему это эндоморфизм. $r\zeta_n^k \sigma e_i = \sum \zeta_n^k \sigma \chi_i(\tau^{-1})\tau e_i \in A$. Значит $f(r)a = 0$ для какого-то унитального многолчена с целыми коэффициентами и любого $a$ из $M$, значит $f(r) = 0$(можно, например, взять $a = e_i$).
+\end{proof}
+
+\begin{theorem}[Бернсайд]
+Пусть $p, q$ --- различные простые, $|G| = p^a q^b$. Тогда $G$ разрешима.
+\end{theorem}
+Докажем сначала несколько утверждений.
+
+\begin{proposition}
+	Пусть $G$ --- конечная группа, $k = \C$, V --- неприводимый $G$-модуль, тогда найдётся гомоморфизм $Z(k[G]) \xrightarrow{\omega} k$, т. ч. $zv = \omega(z)v$. 
+\end{proposition}
+\begin{proof}
+	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $k[G]$-модуль, значит $V = V_\alpha$.
+\end{proof}
+$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(x_K)}{\chi_i}$, где $x_K$ --- представитель класса.
+$\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{k})$ --- целое алгебраическое.
 \section*{Решения задач}
 
 \begin{proof}
