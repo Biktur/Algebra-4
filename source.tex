@@ -18,6 +18,7 @@
 \theoremstyle{definition}
 \newtheorem*{definition}{Определение}
 \theoremstyle{remark}
+\newtheorem*{reminder}{Напоминание}
 \newtheorem*{remark}{Замечание}
 \newtheorem*{example}{Пример}
 \newtheorem{problem}{Задача}
@@ -29,6 +30,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\N}{N}
 \DeclareMathOperator{\ord}{ord}
 
 \newcommand{\Ra}{\Rightarrow}
@@ -36,6 +38,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\renewcommand{\O}{\mathcal{O}}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\inter}{\cap}
 %\renewcommand\qedsymbol{Г$\square\square\square$Л}
@@ -718,7 +721,7 @@ $\tilde{\varphi}$ обнуляется своим характеристичес
 $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d$ --- степень неприводимого представления, тогда $d | n$.
 \end{theorem}
 \begin{proof}
-	$\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau$, пусть $r = \frac{n}{d_i}$. Умножим на $e_i$. $\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau e_i$. Рассмотрим теперь абелеву группу $A$, порождённую $\zeta_n^k \sigma e_i$. Рассмотрим в $A$ эндоморфизм умножение на $r$. Поймём для начала, почему это эндоморфизм. $r\zeta_n^k \sigma e_i = \sum \zeta_n^k \sigma \chi_i(\tau^{-1})\tau e_i \in A$. Значит $f(r)a = 0$ для какого-то унитального многолчена с целыми коэффициентами и любого $a$ из $M$, значит $f(r) = 0$(можно, например, взять $a = e_i$).
+	$\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau$, пусть $r = \frac{n}{d_i}$. Умножим на $e_i$. $\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau e_i$. Рассмотрим теперь абелеву группу $A$, порождённую $\zeta_n^k \sigma e_i$. Рассмотрим в $A$ эндоморфизм умножение на $r$. Поймём для начала, почему это эндоморфизм. $r\zeta_n^k \sigma e_i = \sum \zeta_n^k \sigma \chi_i(\tau^{-1})\tau e_i \in A$. Значит $f(r) = 0$.
 \end{proof}
 
 \begin{theorem}[Бернсайд]
@@ -732,8 +735,72 @@ $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d
 \begin{proof}
 	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $k[G]$-модуль, значит $V = V_\alpha$.
 \end{proof}
-$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(x_K)}{\chi_i}$, где $x_K$ --- представитель класса.
-$\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{k})$ --- целое алгебраическое.
+$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(x_K)}{\chi(1)}$, где $x_K$ --- представитель класса.
+$\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{K})$ --- целое алгебраическое.
+
+\begin{lemma}
+	Если $(|K|, \chi(1)) = (1)$, то или $|\chi(x_k)| = \chi(1)$, или $\chi(x_k) = 0$.
+\end{lemma}
+\begin{proof}
+Пусть $a|K| + b\chi(1) = 1$. Тогда $\frac{a|K| \chi(x_k)}{\chi(1)} = \frac{\chi(x_k)}{\chi(1)} - b\chi(x_k) \in \O$. Значит $\alpha = \frac{\chi(x_k)}{\chi{1}} \in O$. Пусть теперь $|\chi(x_k)| < \chi(1)$, $|\N(\alpha)| = |\prod\limits_{\sigma \in Gal(\Q(\zeta_n) / \Q)} \sigma\alpha| < 1$, т. к. корни переходят в корни, но $\N(\alpha) \in \Z$, значит $\N(\alpha) = 0$, т. е. $\alpha = 0$.
+\end{proof}
+
+\begin{definition}
+$G$ называется простой если $G$ не содержит нетривиальных собственных нормальных подгрупп.
+\end{definition}
+
+\begin{lemma}[Бернсайд]
+	Если $G$ --- простая неабелева конечная группа, $K$ --- класс сопряжённости и $|K| = p^a$, где $p$ --- простое, то $K = {1}$.
+\end{lemma}
+\begin{proof}
+	Пусть $\chi \neq 1$ --- неприводимый характер, $x_k \neq 1$. Пусть $|\chi(x_k)| = \chi(1)$. Пусть $v \in V_\chi$, $g \in G$, тогда $gx_kg^{-1}x_k^{-1}v = v$. Но $G$ --- простая, так что $G \rightarrow \Aut_\C(V_\chi)$ --- вложение, значит $x_k \in Z(G)$, значит $Z(G) = G$. Противоречие.
+	Отсюда, если $(|K|, \chi(1)) = (1)$, то $\chi(x_k) = 0$, иначе говоря, если $p \nmid \chi(1)$, $\chi(x_k) = 0$. $\chi_{reg}(x_k) = \sum \chi_i(1) \chi_i(x_k) = 1 + \sum\limits_{p | \chi(1)} \chi_i(1) \chi_i(x_k) = 1 + p \beta$, но $\beta \in \O$, т. е. $-\frac{1}{p} \in \O$. Противоречие.
+\end{proof}
+
+\begin{proof}
+	Индукция по $G$.
+	\begin{enumerate}
+	\item $G$ --- не простая. Если $N$ --- нетривиальная собственная нормальная подгруппа, по индукции, $G / N$ и $N$ разрешимы, значит и $G$ разрешима.
+	\item $G$ --- простая. Пусть $P$ --- произвольная $p$-Силовская подгруппа. Её центр нетривиален. Пусть $K$ --- класс сопряжённости произвольного неединичного элемента $x \in Z(P)$. $|K| = \frac{|G|}{|C_G(x)|} = q^{b'}$.
+	\end{enumerate}
+\end{proof}
+
+\begin{reminder}
+	$F/k$ называется конечнопорождённым, если $F = k(\alpha_1, \alpha_2, \ldots, \alpha_n)$.
+\end{reminder}
+	Если $\alpha_1$ трансцендентен, $k(\alpha_1) \simeq k(x)$. Отсюда, переставляя элементы, получаем $k \subseteq k(\alpha_1, \alpha_2, \ldots, \alpha_r) \subseteq \subset F$, где первое расширение чисто трансцендентно ($\alpha_i$ алгебраически независимы), а второе конечно.
+\begin{remark}
+	Понятно, что такое представление далеко не единственно, например, можно рассмотреть последовательность $k \subseteq k(t^2) \subseteq k(t)$.
+\end{remark}
+
+\begin{theorem}
+	Пусть $k \subset k(x_1, x_2, \ldots, x_m)  \subset F$, $k \subset k(u_1, u_2, \ldots, u_n) \subset F$, где $x_i$ алгебраически независимы, $F/k(x_1, \ldots, x_m)$ --- конечное, а $u_i$ алгебраически независимы. Тогда $n \leq m$.
+\end{theorem}
+\begin{proof}
+	Пусть $n > m$. $u_1$ алгебраичен над $k(x_1, x_2, \ldots, x_m)$. $f(u_1, x_1, \ldots, x_m) = 0$, причём, т. к. $u_1$ трансцендентен, не умаляя общности, $x_1$ входит в $f$ в ненулевой степени, значит $x_1$ алгебраичен над $k(u_1, x_2, \ldots, x_m)$. Продолжая процесс, получаем, что $F / k(u_1, u_2, \ldots, u_m)$ конечно. Противоречие с трансцендентностью $k(u_1, u_2, \ldots, u_m, u_{m + 1}) / k(u_1, u_2, \ldots, u_m)$.
+\end{proof}
+
+
+\begin{corollary}
+	Если теперь $F / k(u_1, u_2, \ldots, u_n)$ конечно, то $m = n$. $n$ называется степенью трансцендентности $F/k$.
+\end{corollary}
+\begin{proof}
+	Из предыдущей теоремы $m \leq n$ и $n \leq m$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section*{Решения задач}
 
 \begin{proof}
