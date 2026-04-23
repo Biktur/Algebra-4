@@ -33,6 +33,7 @@
 \DeclareMathOperator{\N}{N}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\SL}{SL}
 
 \newcommand{\Ra}{\Rightarrow}
 \renewcommand{\iff}{\Leftrightarrow}
@@ -931,6 +932,22 @@ i & 0
 \chi_5 & 2 & -2 & 0 & 0 & 0
 \end{tabular}
 \end{table}
+
+\end{proof}
+
+\begin{proof}
+
+Пусть $w = \sum_{i = 1}^n a_i e_1 \wedge e_2 \wedge \ldots \wedge \widehat{e}_i \ldots \wedge e_n$, и пусть $w \neq 0$. Рассмотрим произвольную матрицу $A \in \SL_n(F)$ вида
+\begin{equation*}
+\begin{pmatrix}
+a_1 & -a_2 & a_3 & \ldots & (-1)^{n + 1} a_n \\
+* & * & * & \ldots & * \\
+\ldots & \ldots & \ldots & \ldots & \ldots \\
+* & * & * & \ldots & * \\
+\end{pmatrix}
+,
+\end{equation*}
+	такая, очевидно, найдется. Пусть теперь $B$ --- обратная к ней, тогда если $M_{ij}$ --- детерминант матрицы, полученной удалением $i$-ой строки и $j$-ого столбца матрицы $B$, мы знаем, что $(-1)^{i + 1} a_i = (-1)^{i + 1} M_{i1}$, т. е. $M_{i1} = a_i$, тогда $w = B^2 \wedge B^3 \wedge \ldots \wedge B^n$, где $B^i$ --- $i$-ый столбец матрицы $B$.
 
 \end{proof}
 
