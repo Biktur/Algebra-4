@@ -37,6 +37,7 @@
 \DeclareMathOperator{\SL}{SL}
 
 \newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
 \renewcommand{\iff}{\Leftrightarrow}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -842,8 +843,127 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
 Докажите, что, если $m = n - 1$, $\omega \in \bigwedge^m U$ разложим.
 \end{problem}
 
+Пусть $V$ --- векторное пространство, $\dim V = n$, $\{e_1, \hdots, e_n\}$ --- базис $V$. Пусть также $B \in \Mat_{n \times k}$, $C \in \Mat_{n \times (n - k)}$ (напомним, что $\Mat_{a \times b}$ --- это матрицы с $a$ строками и $b$ столбцами).
+\begin{gather*}
+    (e_1, \hdots, e_n) B = \left( \sum_{i = 1}^{n} b_{i 1} e_i, \hdots, \sum_{i = 1}^{n} b_{i k} e_i \right) = (u_1, \hdots, u_k) \\
+    (e_1, \hdots, e_n) C = \left( \sum_{i = 1}^{n} c_{i 1} e_i, \hdots, \sum_{i = 1}^{n} c_{i (n - k)} e_i \right) = (v_1, \hdots, v_{n-k}) \\
+    (\det A) \cdot e_1 \wedge \hdots \wedge e_n = u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} \in \bigwedge^n(V)
+\end{gather*}
+В этот элемент подставим определения векторов $u_i, v_j$.
 
+В части $u_1 \wedge \hdots \wedge u_k$ коэффициент при $e_{i_1} \wedge \hdots e_{i_k}$, где $i_1 < \hdots < i_k$ равен, как мы уже знаем, $\det(B^{[i_1 < \hdots < i_k]})$. То есть
+\begin{equation*}
+    u_1 \wedge \hdots \wedge u_k = \sum_{i_1 < \hdots < i_k} \det(B^{[i_1 < \hdots < i_k]}) e_{i_1} \wedge \hdots \wedge e_{i_k}
+\end{equation*}
 
+Аналогично получаем, что
+\begin{equation*}
+    v_1 \wedge \hdots \wedge v_{n-k} = \sum_{i_1 < \hdots < i_{n-k}} \det(C^{[i_1 < \hdots < i_{n-k}]}) e_{i_1} \wedge \hdots \wedge e_{i_{n-k}}
+\end{equation*}
+\begin{equation*}
+    u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \left( \sum_{i_1 < \hdots < i_k} \hdots \right) \wedge \left( \sum_{i_1 < \hdots < i_{n-k}} \hdots \right)
+\end{equation*}
+Заметим, что при раскрытии скобок слагаемые с пересекающимимся наборами индексов обнулятся. Тогда два набора индексов можно объединить в один набор размера $n$. Поскольку всего базисных векторов $n$, второй набор в таком случае будет в точности дополнением первого. Красткости ради обозначим набор $i_1 < \hdots , i_k$ как $I$, а множество $\{1, \hdots, n\}$ как $[n]$.
+\begin{equation*}
+    u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \sum_{\substack{I \subset [n] \\ |I| = k}} \det(B^I) \det(C^{[n] \setminus I}) \cdot e_I \wedge e_{[n] \setminus I} \cdot (-1)^{\sigma(I, [n] \setminus I)}
+\end{equation*}
+В этом равенстве $[n] \setminus I$ рассматривается как упорядоченный набор, а $\sigma(I, [n] \setminus I)$ означает знак перестановки. Множитель $(-1)^{\sigma(I, [n] \setminus I)}$ появляется, потому что, хотя наборы $I$, $[n] \setminus I$ упорядочены сами по себе, они не упорядочены в совокупности, из-за чего в $e_I \wedge e_{[n] \setminus I}$ базисные вектора могут стоять в неправильном порядке.
+
+Выясним, чему же равно $\sigma(I, [n] \setminus I)$. Для этого вычислим количество инверсий. Поскольку наборы $I$, $[n] \setminus I$ упорядочены сами по себе, все инверсии в перестановке $I, [n] \setminus I$ имеют вид $I \ni a > b \in [n] \setminus I$. Потенциально, инверсиями с элементом $i_s \in I$ могут быть все пары $(i_s, 1), (i_s, 2), \hdots, (i_s, i_s - 1)$. Но некоторые вторые элементы из этих пар также лежат в $I$, и потому инверсий не образуют; таких элементов, поскольку $I$ упорядочено, ровно $s - 1$. Таким образом, количество инверсий с элементом $i_s$ равно $(i_s - 1) - (s - 1) = i_s - s$.
+\begin{gather*}
+    \sigma(I, [n] - I) = \sum_{s = 1}^{k} i_s - s = \sum_{s = 1}^{k} i_s - \frac{k(k+1)}{2} \\
+    \det(A) = \sum_{\substack{I \subset [n] \\ |I| = k}} (-1)^{\sum_{s = 1}^{k} i_s - \frac{k(k+1)}{2}} \det(B^I) \det(C^{[n] \setminus I})
+\end{gather*}
+
+Полученное равенство называют \textit{разложением определителя по группе столбцов}.
+
+\begin{remark}
+    При $k = 1$ это в точности хорошо нам известное разложение определителя по первому столбцу.
+\end{remark}
+
+\begin{remark}
+    Стоит отметить, что полученное разложение раскладывает определитель по первым нескольким столбцам. Доказать, что раскладывать можно и по любому набору столбцов, остаётся в качестве следующей задачи.
+\end{remark}
+
+\begin{problem}
+    Зафиксируем мультииндекс $J \subset [n]$, $|J| = k$. Докажите, что определитель матрицы $A \in \Mat_{n \times n}$ можно раскладывать как по любым столбцам, так и по любым строкам:
+    \begin{align*}
+        \det(A) &= \sum_{\substack{I \subset [n] \\ |I| = k}} (-1)^{\sum_{i \in I} i + \sum_{j \in J} j} M_{I J} M_{\overline{I} \overline{J}} \\
+        &= \sum_{\substack{I \subset [n] \\ |I| = k}} (-1)^{\sum_{i \in I} i + \sum_{j \in J} j} M_{J I} M_{\overline{J} \overline{I}}
+    \end{align*}
+    где $\overline{I} = [n] \setminus I$, $\overline{J} = [n] \setminus J$, $M_{I J}$ --- матрица $A$, в которой рассматриваются строки с индексами из $I$ и столбцы с индексами из $J$.
+\end{problem}
+
+\begin{proposition}[Универсальное свойство внешней алгебры]
+    Пусть $U, V$ --- векторные пространства, $f: U^n \to V$ полилинейно и кососимметрично, $\pi: U^n \to \bigwedge^p U$ сопоставляет элементу $(u_1, \hdots, u_n)$ элемент $u_1 \wedge \hdots \wedge u_n$. Тогда
+    \begin{equation*}
+        \begin{tikzcd}[column sep=small]
+            U^n \arrow{rr}{f} \arrow{dr}[below left]{\pi} & & V \\
+            & \bigwedge^p U \arrow[dashed]{ur}[below right]{! \exists}
+        \end{tikzcd}
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Из универсального свойства тензорного произведения знаем, что
+    \begin{equation*}
+        \begin{tikzcd}[column sep=small]
+            U^n \arrow{rr}{f} \arrow{dr}[below left]{\pi} & & V \\
+            & U^{\otimes n} \arrow[dashed]{ur}[below right]{! \exists}
+        \end{tikzcd}
+    \end{equation*}
+    где $\pi((u_1, \hdots, u_n)) = u_1 \otimes \hdots \otimes u_n$.
+
+    Осталось профакторизовать в этой диаграмме тензорное произведение по идеалу, порождённому элементами $\hdots u_i \otimes u_i \hdots$. Для доказательства того, что это можно сделать, рассмотрим элемент такого вида. Т.к. $f$ кососимметрично, $f((\hdots, u_i, u_i, \hdots)) = 0$.
+    \begin{equation*}
+        \begin{tikzcd}[column sep=small]
+            (\hdots, u_i, u_i, \hdots) \arrow[mapsto]{rr}{f} \arrow[mapsto]{dr}[below left]{\pi} & & 0 \\
+            & \hdots \otimes u_i \otimes u_i \otimes \hdots \arrow[dashed, mapsto]{ur}
+        \end{tikzcd}
+    \end{equation*}
+    Значит, отображение, полученное из универсального свойства тензорного произведения, действительно пропускается через факторизацию.
+\end{proof}
+
+Пусть $U$ --- векторное пространство над $F$, $\chr F \neq 2$. Поинтересуемся, какие элементы в $\bigwedge^n U$ разложимы. Рассмотрим случай $n = 2$.
+
+\begin{proposition}
+    $w \in \bigwedge^2 U$. Тогда $w$ разложимо $\iff$ $w \wedge w = 0 \in \bigwedge^4 U$.
+\end{proposition}
+\begin{proof}
+    $\Ra$: $w = x \wedge y \Ra w \wedge w = x \wedge y \wedge x \wedge y = 0$.
+
+    $\La$: Проведём индукцию по $\dim U$. База: ???
+
+    Индукционнный переход: вынесем из $w$ все базисные вектора с $e_n$: $w = w' + v \wedge e_n$, где $w' \in \bigwedge^2 U$, $w'$ в разложении по базису не содержит элементов $\hdots \wedge e_n \wedge \hdots$, а $v \in U$. Тогда
+    \begin{align*}
+        0 = w \wedge w &= (w' + v \wedge e_n) \wedge (w' + v \wedge e_n) \\ 
+        &= w' \wedge w' + w' \wedge v \wedge e_n + v \wedge e_n \wedge w' + v \wedge e_n \wedge v \wedge e_n \\ 
+        &= w' \wedge w' + 2 w' \wedge v \wedge e_n
+    \end{align*}
+    По построению в разложении слагаемого $w' \wedge w'$ по базису нет элементов $\hdots \wedge e_n \wedge \hdots$, а в слагаемом $2 w' \wedge v \wedge e_n$, очевидно, есть только такие. Значит, если их сумма равна 0, то и каждое слагаемое по отдельности должно быть равно 0. Итого, имеем систему
+    \begin{equation*}
+        \begin{cases}
+            w' \wedge w' = 0 \\
+            w' \wedge v \wedge e_n = 0
+        \end{cases}
+    \end{equation*}
+
+    По индукционному предположению, из $w' \in \bigwedge^2 (\langle e_1, \hdots, e_{n-1} \rangle)$ следует, что $w' \wedge w' = 0 \iff w' = x \wedge y$.
+    \begin{equation*}
+        \begin{cases}
+            w' = x \wedge y \\
+            x \wedge y \wedge v = 0
+        \end{cases}
+    \end{equation*}
+    Из второго равенства следует, что набор векторов $\{x, y, v\}$ линейно зависим. Если $\{x, y\}$ линейно зависим, то $w' = 0 \Ra w = 0 + v \wedge e_n$, чтд. 
+    
+    Иначе $v = \alpha x + \beta y$.
+    \begin{align*}
+        w &= w' + v \wedge e_n \\
+        &= x \wedge y + (\alpha x + \beta y) \wedge e_n + 0 \\
+        &= x \wedge y + (\alpha x + \beta y) \wedge e_n - \alpha \beta \cdot e_n \wedge e_n \\
+        &= (x - \beta e_n) \wedge (y + \alpha e_n)
+    \end{align*}
+\end{proof}
 
 \section*{Решения задач}
 
