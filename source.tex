@@ -24,6 +24,8 @@
 \newtheorem{problem}{Задача}
 \newtheorem*{solution}{Возможное решение}
 
+\let\P\undefined
+
 \DeclareMathOperator{\chr}{char}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
@@ -35,6 +37,8 @@
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\P}{\mathbb{P}}
+\DeclareMathOperator{\rk}{rk}
 
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\La}{\Leftarrow}
@@ -1178,6 +1182,60 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
         &= (x - \beta e_n) \wedge (y + \alpha e_n)
     \end{align*}
 \end{proof}
+
+$V$ --- векторное пространство, $\dim V  = n$, $U \subseteq V$, $\dim U = k$, $u_1, u_2, \ldots, u_k$ --- базис $U$. $u_1 \wedge u_2 \wedge \ldots \wedge u_k \in \bigwedge^n(V)$.
+
+\begin{definition}
+$W$ --- векторное пространство над $k$. Зададим на $W \ \{0\}$ отношение эквивалентности: $w_1 \sim w_2$, если найдётся $\alpha \in k^*$, т. ч. $w_2 = \alpha w_1$. Тогда $\P(W) := W /\sim$. Если $e_0, e_1, \ldots, e_n$ --- базис $W$, получаем однородные координаты $w \leftrightarrow (x_0: x_1: \ldots: x_n)$. $\P(W) = \P_k^n$.
+\end{definition}
+
+\begin{definition}
+Пусть $F$ сопоставляет подпространству $U$  класс $u_1 \wedge u_2 \wedge \ldots \wedge u_k$ в $\P(\bigwedge^k V)$.
+\end{definition}
+
+\begin{definition}
+$(x_0: x_1: \ldots: x_n)$ называется нулём системы $\{f_i = 0\}_{i \in I}$, где $f_i$ --- однородные многочлены от $n + 1$ переменной, если $f_i(x_0, x_1, \ldots, x_n)$ для всех $i$.
+\end{definition}
+
+Определение, очевидно, корректно.
+
+Пусть тогда замкнутые множества $\P^n$ --- множества нулей многочленов. Проверим, что это задаёт топологию:
+
+$\P^n$ --- нули нулевого многочлена, $\varnothing$ --- нули единичного.
+
+Пусть $X$ --- множество нулей системы $\{f_i = 0\}$, $Y$ --- системы $\{g_j = 0\}$. Тогда $X \cup Y$ --- нули системы $\{f_ig_j\}$. Элемент $X \cup Y$, очевидно, ноль этой системы. Если теперь $x \notin X \cup Y$, найдутся $i$ и $j$, т. ч. $f_i(x) \neq 0$ и $g_j(x) \neq 0$, а значит $f_i(x) g_j(x) \neq 0$, т. е. $x$ не ноль указанной системы. Пересечения множеств нулей, очевидно, является множеством нулей объединения соответсвующих систем.
+
+\begin{example}
+Нули системы $x_0 = 0$ --- $\{(0: x_1: \ldots: x_n\} \leftrightarrow \{(x_1 : x_2: \ldots: x_n\}$.
+\end{example}
+
+\begin{proposition}
+$F$ --- вложение.
+\end{proposition}
+\begin{proof}
+Пусть $U \neq W$, $u_1, u_2, \ldots, u_k$ --- базис $U$, $w_1, w_2, \ldots, w_n$ --- базис $W$. Не умаляя общности $w_1 \notin U$, т. е. $u_1, u_2, \ldots, u_n, w_1$ линейно независимы. Но тогда $u_1 \wedge u_2 \wedge \ldots \wedge u_n \wedge w_1 \neq 0 = w_1 \wedge w_2 \wedge \ldots \wedge w_n \wedge w_1$, значит образы $U$ и $V$ непропорциональны.
+\end{proof}
+
+Пусть $0 \neq \omega \in \bigwedge^k V$. Рассмотрим линейное отображение $\Phi: V \rightarrow \bigwedge^{k + 1} V: v \mapsto v \wedge w$.
+
+\begin{lemma}
+$\dim \ker \Phi \le k$ и равенство достигается тогда и только тогда, когда $\omega$ разложим.
+\end{lemma}
+\begin{proof}
+	Пусть $\dim \ker \Phi = r$, $e_1, e_2, \ldots, e_n$ --- базис $V$, причём первые $r$ лежат в $\ker \Phi$. $\omega = \sum \omega_I e_I$. Для $i \le r$, $e_i \wedge \omega = \sum \omega_I e_I \wedge e_i = 0$, значит если $i \notin I$, $\omega_i = 0$, ведь $e_i \wedge e_I$, для $I \not \ni i$ составляют базис. Значит для любого $I$, т. ч. $\omega_I \neq 0$, $i \in I$ для $i  \le r$, значит $r \le k$. 
+Если теперь достигается равенство, $k = r \le |I \cap I'|$. В обратную сторону утверждение очевидно.
+\end{proof}
+
+Из леммы выше сразу же получаем, что $\omega$ разложим тогда и только тогда, когда $\rk \Phi \le n - k$, ведь $\dim \ker \Phi = n - \dim \im \Phi  = n - \rk \Phi$. Но это условие уже задаётся системой однородных уравнений от коэффициентов матрицы $\Phi$, ведь $\rk \Phi \le n - k$ тогда и только тогда, когда все миноры размера $n - k + 1$ равны 0. Но $e_i \wedge e_I$ либо ноль, либо базисный с точностью до знака, т. е. если $\omega = \sum a_I e_I$, коэффициенты матрицы, в частности, являются линейными комибинациями $a_I$, так что полученная система --- система однородных уравнений от $a_I$.
+
+Отсюда, т. к. подпространства соответсвуют разложимым элементам, образ вложения Плюккера замкнут.
+
+Аналогично внешней алгебре можно построить симметрическую алгебру:
+$$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \oplus / (\ldots \otimes x \otimes y \otimes \ldots - \ldots \otimes y \otimes x \otimes \ldots)$$
+
+\begin{problem}
+Доказать, что $S(V) \simeq k[x_1, x_2, \ldots, x_n]$, и изоморфизм переводит $e_i$ в $x_i$.
+\end{problem}
 
 \section*{Решения задач}
 
