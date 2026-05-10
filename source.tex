@@ -21,8 +21,21 @@
 \newtheorem*{reminder}{Напоминание}
 \newtheorem*{remark}{Замечание}
 \newtheorem*{example}{Пример}
-\newtheorem{problem}{Задача}
-\newtheorem*{solution}{Возможное решение}
+\newtheorem{prblm}{Задача}
+
+\newenvironment{problem}
+{\begin{prblm}
+\label{\theprblm}}
+{\end{prblm}}
+
+\newcounter{sltn}
+\setcounter{sltn}{1}
+\newenvironment{solution}
+{\begin{proof}[Возможное решение задачи \rm{\ref{\thesltn}}]}
+{\stepcounter{sltn}
+\end{proof}}
+
+
 
 \let\P\undefined
 
@@ -39,6 +52,7 @@
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\P}{\mathbb{P}}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\trdeg}{tr. deg}
 
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\La}{\Leftarrow}
@@ -47,6 +61,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\O}{\mathcal{O}}
+\newcommand{\p}{\mathfrak{p}}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\inter}{\cap}
 %\renewcommand\qedsymbol{Г$\square\square\square$Л}
@@ -1329,7 +1344,34 @@ i & 0
 \end{solution}
 
 \begin{solution}
+см. решение задачи \ref{1}
+\end{solution}
 
+\begin{solution}
+см. решение задачи \ref{1}
+\end{solution}
+
+\begin{solution}
+	Докажем сначала такой факт: Если $\p_1 \subseteq \p_2$ --- простые идеалы в $B$, и $\p_1 \cap A = \p_2 \cap A$, то $\p_1 = \p_2$. Ну действительно, обозначим $\p' = \p_1 \cap A = \p_2 \cap A$, пусть $x \in \p_2$, и пусть $x^n + a_{n - 1} x^{n - 1} + a_{n - 2} x^{n - 2} + \ldots a_0 = 0$. Пусть $i$ --- минимальное число, т. ч. $a_i \notin \p'$, тогда $x^n + a_{n - 1}x^{n - 1} + \ldots + a_i x^i \in \p_1$, т. е. либо $x^i \in \p_1$, а значит и $x \in \p_1$, либо $x^{n - i} + a_{n - 1}x^{n - i - 1} + \ldots + a_i \in \p_1 \subseteq \p_2$. Но второй	вариант невозможен. И впрямь, ведь тогда  $a_i \in \p_2$, но $a_i \in A$, а значит $a_i \in \p'$. Противоречие. Для заверешение доказательства остаётся заметить, что, если $\p_0 \subsetneq \p_1 \subsetneq \ldots \subsetneq \p_n$ --- последовательность простых в $B$, то $\p_0 \cap A \subsetneq \p_1 \cap A \subsetneq \ldots \subsetneq \p_n \cap A$ --- последовательность простых в $A$.
+\end{solution}
+
+\begin{solution}
+Докажем и нндукцией по $n$. База $n = 0$ --- $\dim k = 0$. $\dim k[t_1, t_2, \ldots, t_n] \ge n$, т. к. есть последовательность $(0) \subsetneq (t_1) \subsetneq (t_1, t_2) \subsetneq \ldots \subsetneq (t_1, t_2, \ldots, t_n)$. Пусть $0 \subsetneq \p_0 \subsetneq \p_1 \ldots \subsetneq \p_k$ --- последовательность простых, тогда, если $B = k[t_1, t_2, \ldots, t_n] / \p_0$, $\trdeg B < n$, значит, по лемме Нётер, найдутся алгебраически независимые $x_1, x_2, \ldots, x_m$, где $m < n$, т. ч. $B$ --- конечнопорождённый модуль над $A := k[x_1, x_2, \ldots, x_m]$, но по индукции $\dim A = m$, значит, из предыдущей задачи, $\dim B \le m \le n - 1$, т. е. $k \le \dim B + 1 \le n$.
+\end{solution}
+
+\begin{solution}
+	%Потом придумаю, как написать
+\end{solution}
+
+\begin{solution}
+	
+\end{solution}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{solution}
 Пусть $w = \sum_{i = 1}^n a_i e_1 \wedge e_2 \wedge \ldots \wedge \widehat{e}_i \ldots \wedge e_n$, и пусть $w \neq 0$. Рассмотрим произвольную матрицу $A \in \SL_n(F)$ вида
 \begin{equation*}
 \begin{pmatrix}
@@ -1341,7 +1383,10 @@ a_1 & -a_2 & a_3 & \ldots & (-1)^{n + 1} a_n \\
 ,
 \end{equation*}
 	такая, очевидно, найдется. Пусть теперь $B$ --- обратная к ней, тогда если $M_{ij}$ --- детерминант матрицы, полученной удалением $i$-ой строки и $j$-ого столбца матрицы $B$, мы знаем, что $(-1)^{i + 1} a_i = (-1)^{i + 1} M_{i1}$, т. е. $M_{i1} = a_i$, тогда $w = B^2 \wedge B^3 \wedge \ldots \wedge B^n$, где $B^i$ --- $i$-ый столбец матрицы $B$.
+\end{solution}
 
+\begin{solution}
+	Утверждение доказано для $J = \{1, 2, \ldots, k\}$, причём если утверждение верно для $J$, то оно верно для $(j\, j + 1)(J)$, значит оно верно для всех $J$.
 \end{solution}
 
 \end{document}
