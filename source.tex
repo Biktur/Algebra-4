@@ -53,6 +53,8 @@
 \DeclareMathOperator{\P}{\mathbb{P}}
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\trdeg}{tr. deg}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Ob}{Ob}
 
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\La}{\Leftarrow}
@@ -1239,6 +1241,153 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
 \begin{problem}
 Доказать, что $S(V) \simeq k[x_1, x_2, \ldots, x_n]$, и изоморфизм переводит $e_i$ в $x_i$.
 \end{problem}
+
+\begin{definition}[Категория]
+    Категория $\mathcal{C}$ состоит из класса объектов $\Ob_{\mathcal{C}}$, для каждой пары $A, B$ объектов из которого определён класс морфизмов $\Mor(A, B)$ со следующими свойствами:
+    \begin{enumerate}
+        \item $\Mor (A_1, B_1) \inter \Mor(A_2, B_2) \neq \varnothing \Ra A_1 = A_2, B_1 = B_2$
+        \item $\forall A \in \Ob \exists \id \in \Mor(A, A)$
+        \item Определено отображение композиции $\circ : \Mor(A, B) \times \Mor(B, C) \to \Mor(A, C)$
+        \item Композиция ассоциативна, т.е. $A \overset{\varphi}{\to} B \overset{\psi}{\to} C \overset{\tau}{\to} D \Ra \varphi \circ (\psi \circ \tau) = (\varphi \circ \psi) \circ \tau$
+        \item $\forall \varphi (\id \circ \varphi = \varphi \circ \id = \varphi)$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Произведение объектов]
+    Пусть заданы морфизмы $\varphi_1 \in \Mor(A_1, R)$, $\varphi_2 \in \Mor(A_2, R)$. Произведением объектов $A_1, A_2$ над объектом $R$ называется объект $A_1 \times_R A_2$ вместе с морфизмами $pr_1 \in \Mor(A_1 \times_R A_2, A_1)$, $pr_2 \in \Mor(A_1 \times_R A_2, A_2)$ такой, что для любого объекта $T$ и морфизмов $\tau_1 \in \Mor(T, A_1)$, $\tau_2 \in \Mor(T, A_2)$ следующая диаграмма коммутирует.
+    \begin{equation*}
+    \begin{tikzcd}
+        & T \ar[dashed]{d}{\exists !} \ar[bend right=20, swap]{ddl}{\tau_1} \ar[bend left=20]{ddr}{\tau_2} & \\
+        & A_1 \times_R A_2 \ar{dl}{pr_1} \ar[swap]{dr}{pr_2} & \\
+        A_1 \ar{dr}{\varphi_1} & & A_2 \ar[swap]{dl}{\varphi_2} \\
+        & R &
+    \end{tikzcd}
+    \end{equation*}
+    Это называется универсальным свойством произведения.
+\end{definition}
+
+\begin{remark}
+    Простым примером категории является категория множеств $\mathbf{Set}$. Объектами в ней являются множества, морфизмами --- отображения между множествами, а роль композиции выполняет композиция функций.
+
+    В категории множеств $A_1 \times_R A_2 = \{ (a_1, a_2) \in A_1 \times A_2 | \varphi_1(a_1) = \varphi_2(a_2) \}$, а $pr_i$ есть проекция на $i$-ую координату. Морфизмом из $T$ в $A_1 \times_R A_2$ оказывается $\psi(t) = (\tau_1(t), \tau_2(t))$. Убедиться в том, что при таких определениях диаграмма коммутирует, весьма несложно.
+\end{remark}
+
+\begin{definition}[Изоморфизм]
+    Изоморфизм --- обратимый морфизм.
+\end{definition}
+
+\begin{proposition}
+    Произведение объектов единственно с точностью до изоморфизма.
+\end{proposition}
+\begin{proof}
+    Пусть есть два объекта $P, P'$, для которых диаграмма произведения коммутирует. Тогда можно составить следующую коммутативную диаграмму:
+    \begin{equation*}
+    \begin{tikzcd}
+        & P \ar[dashed]{d}{\alpha} \ar[bend right=20, swap]{dddl}{pr_1} \ar[bend left=20]{dddr}{pr_2} & \\
+        & P' \ar[dashed]{d}{\beta} \ar[swap]{ddl}{pr_1'} \ar{ddr}{pr_2'} & \\
+        & P \ar{dl}{pr_1} \ar[swap]{dr}{pr_2} & \\
+        A_1 \ar{dr}{\varphi_1} & & A_2 \ar[swap]{dl}{\varphi_2} \\
+        & R &
+    \end{tikzcd}
+    \end{equation*}
+    Из этого следует, что коммутирует диаграмма
+    \begin{equation*}
+    \begin{tikzcd}
+        & P \ar[dashed]{d}{\alpha \circ \beta} \ar[bend right=20, swap]{ddl}{pr_1} \ar[bend left=20]{ddr}{pr_2} & \\
+        & P \ar{dl}{pr_1} \ar[swap]{dr}{pr_2} & \\
+        A_1 \ar{dr}{\varphi_1} & & A_2 \ar[swap]{dl}{\varphi_2} \\
+        & R &
+    \end{tikzcd}
+    \end{equation*}
+    Но, по универсальному свойству, из этого следует, что $\alpha \circ \beta = \id$, т.к. с $\id$ эта диаграмма тоже будет коммутировать, а такой морфизм должен быть единственным.
+
+    Аналогично получается, что и $\beta \circ \alpha = \id$. Значит $\alpha: P \to P'$ --- изоморфизм.
+\end{proof}
+
+\begin{remark}
+    Вообще говоря, термин с приставкой "<ко-"> обычно определяется также как и тот же термин без неё, только в определении нужно обратить все стрелки.
+\end{remark}
+
+\begin{definition}[Копроизведение]
+    Пусть заданы морфизмы $\varphi_1 \in \Mor(R, A_1)$, $\varphi_2 \in \Mor(R, A_2)$. Тогда копроизведение $A_1, A_2$ над $R$ --- объект $A_1 \oplus_R A_2$ вместе с морфизмами $i_1 \in \Mor(A_1, A_1 \oplus_R A_2)$, $i_2 \in \Mor(A_2, A_1 \oplus_R A_2)$ такой, что всегда коммутирует диаграмма
+    \begin{equation*}
+    \begin{tikzcd}
+        & T & \\
+        & A_1 \oplus_R A_2 \ar[dashed]{u}{\exists !} & \\
+        A_1 \ar[swap]{ur}{i_1} \ar{uur}{\tau_1} & & A_2 \ar{ul}{i_2} \ar[swap]{uul}{\tau_2}  \\
+        & R \ar[swap]{ul}{\varphi_1} \ar{ur}{\varphi_2} &
+    \end{tikzcd}
+    \end{equation*}
+    Это называется универсальным свойством копроизведения.
+\end{definition}
+
+\begin{problem}
+    Докажите, что копроизведение единственно с точностью до изоморфизма.
+\end{problem}
+
+\begin{remark}
+    В качестве примера копроизведения рассмотрим его в категории модулей $\mathbf{Mod}$ (в ней морфизмы --- обычные гомоморфизмы модулей).
+    \begin{equation*}
+    \begin{tikzcd}
+        & T & \\
+        & A_1 \oplus_R A_2 \ar{u}{\psi} & \\
+        A_1 \ar[swap]{ur}{i_1} \ar{uur}{\tau_1} & & A_2 \ar{ul}{i_2} \ar[swap]{uul}{\tau_2}  \\
+        & R \ar[swap]{ul}{\varphi_1} \ar{ur}{\varphi_2} &
+    \end{tikzcd}
+    \end{equation*}
+    \begin{gather*}
+        A_1 \oplus_R A_2 = (A_1 \oplus A_2) / M, \quad M = {(\varphi_1(r), -\varphi_2(r)) | r \in R} \\
+        i_1(a_1) = \overline{(a_1, 0)}, \quad i_2(a_2) = \overline{(0, a_2)}, \quad \psi((a_1, a_2)) = \tau_1(a_1) + \tau_2(a_2)
+    \end{gather*}
+    Как и в случае произведения в категории множеств, коммутативность диаграммы проверяется элементарно.
+\end{remark}
+
+\begin{remark}
+    Рассмотрим копроизведение в категории коммутативных колец с 1 (в ней морфизмы --- обычные гомоморфизмы коммутативных колец с 1). Заметим, что $\varphi_i \in \Mor(R, A_i)$ задаёт на $A_i$ структуру $R$-модуля. Далее под $A_1 \otimes A_2$ понимается $A_1 \otimes_R A_2$, т.е. тензорное произведение над модулем $R$.
+
+    Отображение
+    \begin{equation*}
+        \cdot: A_1 \times A_2 \times A_1 \times A_2 \to A_1 \otimes A_2, \quad \cdot(a_1 \times a_2 \times b_1 \times b_2) = a_1 b_1 \otimes a_2 b_2
+    \end{equation*}
+    $R$-полилинейно, значит, по универсальному свойству тензороного произведения, оно преобразуется в отображение
+    \begin{equation*}
+        \cdot: (A_1 \otimes A_2) \otimes (A_1 \otimes A_2) \to A_1 \otimes A_2, \quad \cdot((a_1 \otimes a_2) \otimes (b_1 \otimes b_2)) = a_1 b_1 \otimes a_2 b_2
+    \end{equation*}
+    Тогда существует билинейное отображение
+    \begin{equation*}
+        \cdot: (A_1 \otimes A_2) \times (A_1 \otimes A_2) \to A_1 \otimes A_2, \quad \cdot(a_1 \otimes a_2, b_1 \otimes b_2) = a_1 b_1 \otimes a_2 b_2
+    \end{equation*}
+    Оно определяет умножение на $A_1 \otimes A_2$, тем самым задавая на нём структуру кольца.
+    
+    Теперь напишем диаграмму
+    \begin{equation*}
+    \begin{tikzcd}
+        & T & \\
+        & A_1 \otimes A_2 \ar{u}{\psi} & \\
+        A_1 \ar[swap]{ur}{i_1} \ar{uur}{\tau_1} & & A_2 \ar{ul}{i_2} \ar[swap]{uul}{\tau_2}  \\
+        & R \ar[swap]{ul}{\varphi_1} \ar{ur}{\varphi_2} &
+    \end{tikzcd}
+    \end{equation*}
+    \begin{gather*}
+        i_1(a_1) = a_1 \otimes 1, \quad i_2(a_2) = 1 \otimes a_2 \\
+        (i_1 \circ \varphi_1)(r) = \varphi_1(r) \otimes 1 = (r \cdot 1) \otimes 1 = 1 \otimes (r \cdot 1) = 1 \otimes \varphi_2(r) = (i_2 \circ \varphi_2)(r)
+    \end{gather*}
+    Отображение $\psi': A_1 \times A_2 \to T$, $\psi'((a_1, a_2)) = \tau_1(a_1) \tau_2(a_2)$ билинейно, а значит, задаёт отображение $\psi: A_1 \otimes A_2 \to T$, $\psi(a_1 \otimes a_2) = \tau_1(a_1) \tau_2(a_2)$. $\psi$ --- гоморфизм модулей, но легко проверить, что оно задаёт и гоморфизм коммутативных колец с 1.
+
+    Легко видеть, что полученная диаграмма коммутирует.
+\end{remark}
+
+\begin{definition}[Проективный предел]
+    Пусть $I$ --- частично упорядоченное множество, $\{X_i\}_{i \in I}$ --- семейство абелевых групп. Также для любых $i, j \in I$, $i \leq j$ определён гомоморфизм $f_{ij}: X_j \to X_i$ со следующими свойствами:
+    \begin{enumerate}
+        \item $f_ii = \id$
+        \item $i \leq j \leq k \Ra f_{ik} = f_{ij} \circ f_{jk}$
+    \end{enumerate}
+    Тогда \textit{проективным пределом} (или \textit{обратным пределом}) называют
+    \begin{equation*}
+        X = \lim_{\substack{\leftarrow \\ i \in I}} X_i = \left\{ \left. a \in \prod_{i \in I} X_i \right| \forall i \leq j (a_i = f_{ij}(a_j)) \right\}
+    \end{equation*}
+\end{definition}
 
 \section*{Решения задач}
 
