@@ -67,6 +67,7 @@
 \newcommand{\F}{\mathscr{F}}
 \newcommand{\G}{\mathscr{G}}
 \newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\inter}{\cap}
 %\renewcommand\qedsymbol{Г$\square\square\square$Л}
@@ -250,9 +251,8 @@ $x = \sum\limits_{\sigma \in G} a_\sigma \tau \sigma \tau^{-1}$, для любо
     Поскольку при таком действии $\lambda_i$ не меняются, не меняется и их сумма, а значит, $\sigma(V) \subset V$.
     
     Осталось показать, что $V$ --- неприводимое. Предположим противное, тогда $V = W \oplus V'$, где $W \neq 0, V \Ra 0 < \dim(W) < \dim(V) \Ra \dim(W) = 1$. Тогда $W = \langle \lambda_1 e_1 + \lambda_2 e_2 + \lambda_3 e_3 \rangle$, где $\lambda_1 + \lambda_2 + \lambda_3 = 0$. Поскольку $\dim(W) = 1$, любые два вектора в $W$ коллинеарны, в частности, для любого $\sigma \in S_3$ $\sigma(\sum \lambda_i e_i) = \alpha \sum \lambda_i e_i$. Но при этом
-    \begin{equation*}
-        \sigma(\lambda_1 e_1 + \lambda_2 e_2 + \lambda_3 e_3) = \lambda_1 e_{\sigma(1)} + \lambda_2 e_{\sigma(2)} + \lambda_3 e_{\sigma(3)} = \lambda_{\sigma^{-1}(1)} e_1 + \lambda_{\sigma^{-1}(2)} e_2 + \lambda_{\sigma^{-1}(3)} e_3
-    \end{equation*}
+$$\sigma(\lambda_1 e_1 + \lambda_2 e_2 + \lambda_3 e_3) = \lambda_1 e_{\sigma(1)} + \lambda_2 e_{\sigma(2)} + \lambda_3 e_{\sigma(3)} =$$
+$$= \lambda_{\sigma^{-1}(1)} e_1 + \lambda_{\sigma^{-1}(2)} e_2 + \lambda_{\sigma^{-1}(3)} e_3$$
     
     Обозначим $\sigma^{-1}(1) = \tau$. Поскольку равенство $\sigma \in S_3$ $\sigma(\sum \lambda_i e_i) = \alpha \sum \lambda_i e_i$ должно выполняться для любого $\sigma \in S_3$, система
     \begin{equation*}
@@ -749,14 +749,14 @@ $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d
 \begin{proof}
 	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $k[G]$-модуль, значит $V = V_\alpha$.
 \end{proof}
-$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(x_K)}{\chi(1)}$, где $x_K$ --- представитель класса.
+$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(g_K)}{\chi(1)}$, где $g_K$ --- представитель класса.
 $\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{K})$ --- целое алгебраическое.
 
 \begin{lemma}
-	Если $(|K|, \chi(1)) = (1)$, то или $|\chi(x_k)| = \chi(1)$, или $\chi(x_k) = 0$.
+	Если $(|K|, \chi(1)) = (1)$, то или $|\chi(g_K)| = \chi(1)$, или $\chi(g_K) = 0$.
 \end{lemma}
 \begin{proof}
-Пусть $a|K| + b\chi(1) = 1$. Тогда $\frac{a|K| \chi(x_k)}{\chi(1)} = \frac{\chi(x_k)}{\chi(1)} - b\chi(x_k) \in \O$. Значит $\alpha = \frac{\chi(x_k)}{\chi{1}} \in O$. Пусть теперь $|\chi(x_k)| < \chi(1)$, $|\N(\alpha)| = |\prod\limits_{\sigma \in Gal(\Q(\zeta_n) / \Q)} \sigma\alpha| < 1$, т. к. корни переходят в корни, но $\N(\alpha) \in \Z$, значит $\N(\alpha) = 0$, т. е. $\alpha = 0$.
+	Пусть $a|K| + b\chi(1) = 1$. Тогда $\frac{a|K| \chi(g_K)}{\chi(1)} = \frac{\chi(g_K)}{\chi(1)} - b\chi(g_K) \in \O$. Значит $\alpha = \frac{\chi(g_K)}{\chi(1)} \in O$. Пусть теперь $|\chi(g_K)| < \chi(1)$, тогда $|\N(\alpha)| = |\prod\limits_{\sigma \in Gal(\Q(\zeta_n) / \Q)} \sigma\alpha| < 1$, т. к. корни переходят в корни, но $\N(\alpha) \in \Z$, значит $\N(\alpha) = 0$, т. е. $\alpha = 0$.
 \end{proof}
 
 \begin{definition}
@@ -780,7 +780,7 @@ $G$ называется простой, если $G$ не содержит не
 \end{proof}
 
 \begin{reminder}
-	$F/k$ называется конечнопорождённым, если $F = k(\alpha_1, \alpha_2, \ldots, \alpha_n)$.
+	Расширение $F/k$ называется конечнопорождённым, если $F = k(\alpha_1, \alpha_2, \ldots, \alpha_n)$.
 \end{reminder}
 	Если $\alpha_1$ трансцендентен, $k(\alpha_1) \simeq k(x)$. Отсюда, переставляя элементы, получаем $k \subseteq k(\alpha_1, \alpha_2, \ldots, \alpha_r) \subseteq F$, где первое расширение чисто трансцендентно ($\alpha_i$ алгебраически независимы), а второе конечно.
 \begin{remark}
@@ -791,7 +791,7 @@ $G$ называется простой, если $G$ не содержит не
 	Пусть $k \subset k(x_1, x_2, \ldots, x_m)  \subset F$, $k \subset k(u_1, u_2, \ldots, u_n) \subset F$, где $x_i$ алгебраически независимы, $F/k(x_1, \ldots, x_m)$ --- конечное, а $u_i$ алгебраически независимы. Тогда $n \leq m$.
 \end{theorem}
 \begin{proof}
-	Пусть $n > m$. $u_1$ алгебраичен над $k(x_1, x_2, \ldots, x_m)$. $f(u_1, x_1, \ldots, x_m) = 0$, причём, т. к. $u_1$ трансцендентен, не умаляя общности, $x_1$ входит в $f$ в ненулевой степени, значит $x_1$ алгебраичен над $k(u_1, x_2, \ldots, x_m)$. Продолжая процесс, получаем, что $F / k(u_1, u_2, \ldots, u_m)$ конечно. Противоречие с трансцендентностью $k(u_1, u_2, \ldots, u_m, u_{m + 1}) / k(u_1, u_2, \ldots, u_m)$.
+	Пусть $n > m$. $u_1$ алгебраичен над $k(x_1, x_2, \ldots, x_m)$, значит найдётся многочлен $f$, т. ч. $f(u_1, x_1, \ldots, x_m) = 0$, причём, т. к. $u_1$ трансцендентен, не умаляя общности, $x_1$ входит в $f$ в ненулевой степени, значит $x_1$ алгебраичен над $k(u_1, x_2, \ldots, x_m)$. Продолжая процесс, получаем, что $F / k(u_1, u_2, \ldots, u_m)$ конечно. Противоречие с трансцендентностью $k(u_1, u_2, \ldots, u_m, u_{m + 1}) / k(u_1, u_2, \ldots, u_m)$.
 \end{proof}
 
 
@@ -811,12 +811,12 @@ $G$ называется простой, если $G$ не содержит не
 \end{remark}
 
 \begin{lemma}[Нётер о нормализации]
-    Пусть $A$ --- конечнопорождённая $k$-алгебра. Тогда найдутся алгебраически независимые $y_1, \hdots, y_l \in A$ (возможно, $l = 0$) такие, что $A$ --- конечнопорождённый модуль над $k[y_1, \hdots, y_l]$.
+    Пусть $A$ --- конечнопорождённая алгебра над $k$. Тогда найдутся алгебраически независимые $y_1, \hdots, y_l \in A$ (возможно, $l = 0$) такие, что $A$ --- конечнопорождённый модуль над $k[y_1, \hdots, y_l]$.
 \end{lemma}
 \begin{proof}
     $A = k[x_1, \hdots, x_n]$. Проведём индукцию по $n$. Если $n = 1$, то $A = k[x_1]$. В случае, если $x_1$ алгебраичен над $k$, то $A$ --- конечнопорождённый модуль над $k$ (порождается конечным числом степеней $x_1$). Если же $x_1$ не алгебраичен над $k$, то можно взять $y_1 = x_1$, и тогда $A = k[y_1]$.
 
-    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе перенумеруем $x_1, \hdots, x_n$ таким образом, что $x_1, \hdots, x_r$ алгебраически независимы, а $x_{r+1}, \hdots, x_n$ алгебраически зависят от них; $r < n$.
+    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе перенумеруем $x_1, \hdots, x_n$ таким образом, что первые $r$ алгебраически независимы, где $r = \trdeg A < n$.
 
     Распишем определение алгебраической зависимости $x_1, \hdots, x_n$: найдтся полином $f \not\equiv 0$ такой, что $f(x_1, \hdots, x_n) = 0$. Выделим из него степени $x_n$ и рассмотрим старшую из них:
     \begin{equation*}
@@ -884,9 +884,9 @@ $G$ называется простой, если $G$ не содержит не
 Пусть поле $k$ алгебраически замкнуто. Оказывается, все максимальные идеалы в $k[t_1, \hdots, t_n]$ имеют конкретный вид.
 
 \begin{theorem}
-    $k = \overline{k}$, $m \subset k[t_1, \hdots, t_n]$ --- максимальный идеал тогда и только тогда, когда найдутся некоторые $a_i \in k$ такие, что
+    $k = \bar{k}$, $\m \subset k[t_1, \hdots, t_n]$ --- максимальный идеал тогда и только тогда, когда найдутся некоторые $a_i \in k$ такие, что
     \begin{equation*}
-        m = (t_1 - a_1, \hdots, t_n - a_n)
+        \m = (t_1 - a_1, \hdots, t_n - a_n)
     \end{equation*}
 \end{theorem}
 \begin{proof}
@@ -898,11 +898,11 @@ $G$ называется простой, если $G$ не содержит не
     \end{equation*}
     то есть добавить $g$ с сохранением собственности идеала не получится.
 
-    $\Ra$: Если $m$ максимален, то $k \subset k[t_1, \hdots, t_n] / m = A$ --- поле. При этом $A$ конечно порождается $\overline{t_i}$ как $k$-алгебра. Тогда, по условно доказанному утверждению выше, $A / k$ --- конечное расширение, и, поскольку $k = \overline{k}$, $A = k$. Но если $A = k$, то
+	$\Ra$: Если $\m$ максимален, то $k \subset k[t_1, \hdots, t_n] / \m = A$ --- поле. При этом $A$ конечно порождается $\bar{t}_i$ как $k$-алгебра. Тогда, по условно доказанному утверждению выше, $A / k$ --- конечное расширение, и, поскольку $k = \bar{k}$, $A = k$. Но если $A = k$, то
     \begin{equation*}
-        \forall \overline{t_i} \exists a_i \in A = k \left( \overline{t_i} - a_i = 0 \right) \Ra t_i - a_i \in m \Ra (t_1 - a_1, \hdots, t_n - a_n) \subset m
+	\forall \bar{t}_i \exists a_i \in A = k \left( \bar{t}_i - a_i = 0 \right) \Ra t_i - a_i \in \m \Ra (t_1 - a_1, \hdots, t_n - a_n) \subset \m
     \end{equation*}
-    Мы уже знаем, что идеалы такого вида максимальны, а значит, $(t_1 - a_1, \hdots, t_n - a_n) = m$.
+    Мы уже знаем, что идеалы такого вида максимальны, а значит $\m = (t_1 - a_1, \hdots, t_n - a_n)$.
 \end{proof}
 
 \begin{proposition}
@@ -925,7 +925,7 @@ $G$ называется простой, если $G$ не содержит не
     Обратное утверждение очевидно.
 \end{remark}
 \begin{remark}
-    Следующее доказательство опубликовал некто J. L. Rabinowitsch в 1929 году. В честь него доказательство часто называют "<трюком Рабиновича">. Кем был J. L. Rabinowitsch достоверно неизвестно.
+    Доказательство ниже опубликовал некто J. L. Rabinowitsch в 1929 году. В честь него доказательство часто называют "<трюком Рабиновича">. Кем был J. L. Rabinowitsch достоверно неизвестно.
 \end{remark}
 \begin{proof}
     Рассмотрим $k[t_1,\hdots, t_m, x]$, $\{ f_1, \hdots, f_n, 1 - x \cdot h \}$. У этого множества нет общих корней: если при некоторой подстановке $f_i = 0$, то и $h = 0$, а значит, $1 - x h = 1 \neq 0$.
@@ -1042,7 +1042,7 @@ $e_I \wedge e_J = (-1)^{\varepsilon{i_1, i_2, \ldots, i_k, j_1, j_2, \ldots, j_l
 $\dim U = n$, $u_1, u_2, \ldots, u_m \in U$, $m < n$ линейно зависимы тогда и только тогда, когда $u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$
 \end{proposition}
 \begin{proof}
-Если вектора линейно зависимы, $\alpha_1 u_1 + \alpha_2 u_2 + \ldots + \alpha_m u_m = 0$. Домножая на $u_2 \wedge u_3 \wedge \ldots \wedge u_m$, получаем, что $\alpha_1 u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$, значит $u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$.
+Если вектора линейно зависимы, то $\alpha_1 u_1 + \alpha_2 u_2 + \ldots + \alpha_m u_m = 0$. Домножая на $u_2 \wedge u_3 \wedge \ldots \wedge u_m$, получаем, что $\alpha_1 u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$, значит $u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$.
 	
 Если теперь вектора линейно независимы, дополнив до базиса, получаем $u_1 \wedge u_2 \wedge \ldots \wedge u_m \wedge \tilde{u}_{m + 1} \wedge \ldots \wedge \tilde{u}_n \neq 0$, значит $u_1 \wedge u_2 \wedge \ldots \wedge u_m \neq 0$ и подавно.
 \end{proof}
@@ -1052,9 +1052,11 @@ $$(e_1, e_2, \ldots, e_k)B = (u_1, u_2, \ldots, u_n),$$
 $$(u_1, u_2, \ldots, u_n)C = (v_1, v_2, \ldots, v_k)$$
 $$v_i = \sum_{j = 1}^n a_{ji}e_j$$
 $$v_1 \wedge v_2 \wedge \ldots \wedge v_k = \det(BC) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
-$$v_1 \wedge v_2 \wedge \ldots \wedge v_k = (c_{11} u_1 + c_{21} u_2 + \ldots + c_{n1} u_n) \wedge (c_{12} u_1 + c_{22} u_2 + \ldots + c_{n2} u_n) \wedge \ldots \wedge (c_{1n}u_1 + c_{2n}u_2 + \ldots + c_{nn} u_n) =$$
+$$v_1 \wedge v_2 \wedge \ldots \wedge v_k = (c_{11} u_1 + c_{21} u_2 + \ldots + c_{n1} u_n) \wedge (c_{12} u_1 + c_{22} u_2 + \ldots + c_{n2} u_n) \wedge \ldots \wedge$$ 
+$$(c_{1n}u_1 + c_{2n}u_2 + \ldots + c_{nn} u_n) =$$
 $$ = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det\begin{pmatrix} c_{i_1 1} & c_{i_1 2} & \ldots & c_{i_1 k} \\ c_{i_2 1} & c_{i_2 2} & \ldots & c_{i_2 k} \\ \ldots & \ldots & \ldots  & \ldots \\ c_{i_k 1} & c_{i_k 2} & \ldots & c_{i_k k} \end{pmatrix} u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} :=$$
-$$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})=$$
+$$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} =$$
+$$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})=$$
 $$= \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k :=$$
 $$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]}) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
 Итого, $\det(BC) = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]})$.
@@ -1473,7 +1475,7 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 \end{solution}
 
 \begin{solution}
-	Аналогично, $\{1\}$, $\{-1\}$, $\{i, -i\}$, $\{j, -j\}$ и $\{k, -k\}$ --- все классы смежности,  есть 4 одномерных и 1 двумерное. Найдём одномерные. Т. к. $i^2 = j^2 = (ij)^2$, получаем, что $-1 \mapsto 1$. Значит, либо представление тривиально, либо два элемента из $\{i, j, k\}$ переходит в -1, оставшийся в 1. Найдём теперь двумерное (оно на самом деле было в каком-то листочке):
+	$\{1\}$, $\{-1\}$, $\{i, -i\}$, $\{j, -j\}$ и $\{k, -k\}$ --- все классы сопряжённости,  есть 4 одномерных и 1 двумерное. Найдём одномерные. Т. к. $i^2 = j^2 = (ij)^2$, получаем, что $-1 \mapsto 1$. Значит, либо представление тривиально, либо два элемента из $\{i, j, k\}$ переходит в -1, оставшийся в 1. Найдём теперь двумерное (оно на самом деле было в каком-то листочке):
 \begin{equation*}
 i \mapsto
 \begin{pmatrix}
@@ -1499,7 +1501,7 @@ i & 0
 \end{solution}
 
 \begin{solution}
-	Достаточно доказать аналогичный факт для всех делителей 24 больших 1. Ну действительно, ни одно из чисел $1, 2, 3, 5, 7, 11$ не представляется в виде $4x + 9y$.
+	Достаточно доказать аналогичный факт для всех делителей 24 больших 1. Ну действительно, ни одно из чисел $1, 2, 3, 5, 7,$ $11$ не представляется в виде $4x + 9y$.
 \end{solution}
 
 \begin{solution}
@@ -1561,7 +1563,7 @@ i & 0
 \end{solution}
 
 \begin{solution}
-	Отображение $\varphi_{(v_1, v_2, \ldots, v_m)}(v_{m + 1}, v_{m + 2}, \ldots, v_{m + n}) = v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$ полилинейно, значит определено $\tilde{\varphi}_{(v_1, v_2, \ldots, v_m)}(v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n}) = v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$. Фиксируя после этого $v_{m + 1}, v_{m + 2}, \ldots, v_{m + n}$, получаем отображение $(v_1 \otimes v_2 \otimes \ldots \otimes v_m, v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n}) \mapsto v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$, оно билинейно, так что получаем искомое. Наличие отображения в обратную сторону сразу следует из полилинености $(v_1, v_2, \ldots, v_{m + n}) \mapsto (v_1 \otimes v_2 \otimes \ldots \otimes v_m) \otimes (v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n})$. Т. к. такие тензоры порождают всё, эти отображения взаимнообратны.
+	Отображение $\varphi_{(v_1, v_2, \ldots, v_m)}(v_{m + 1}, v_{m + 2}, \ldots, \allowbreak v_{m + n}) = v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$ полилинейно, значит определено линейное отображение $\tilde{\varphi}_{(v_1, v_2, \ldots, v_m)}(v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n}) = v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$. Фиксируя после этого $v_{m + 1}, v_{m + 2}, \ldots, v_{m + n}$, получаем отображение $(v_1 \otimes v_2 \otimes \ldots \otimes v_m, v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n}) \mapsto v_1 \otimes v_2 \otimes \ldots \otimes v_{m + n}$, оно билинейно, так что получаем искомое. Наличие отображения в обратную сторону сразу следует из полилинености $(v_1, v_2, \ldots, v_{m + n}) \mapsto (v_1 \otimes v_2 \otimes \ldots \otimes v_m) \otimes (v_{m + 1} \otimes v_{m + 2} \otimes \ldots \otimes v_{m + n})$. Т. к. такие тензоры порождают всё, эти отображения взаимнообратны.
 \end{solution}
 
 \begin{solution}
@@ -1595,7 +1597,7 @@ a_1 & -a_2 & a_3 & \ldots & (-1)^{n + 1} a_n \\
 \end{solution}
 
 \begin{solution}
-Cимметричность и невырожденность очевидны, $|0|_p = 0$, по определению, $p^{-v_p(z - x)} = p^{-v_p((z - y) + (y - x))} \le p^{-\min\{v_p(z - y), v_p(y - x)\}} \le \max\{|z - y|_p, |y - x|_p\}$.
+	Cимметричность и невырожденность очевидны, $|0|_p = 0$, по определению. $v_p(a + b) \ge \min\{v_p(a), v_p(b)\}$, по определению, так что $p^{-v_p(z - x)} = p^{-v_p((z - y) + (y - x))} \le p^{-\min\{v_p(z - y), v_p(y - x)\}} \le \max\{|z - y|_p, |y - x|_p\}$.
 \end{solution}
 
 \begin{solution}
