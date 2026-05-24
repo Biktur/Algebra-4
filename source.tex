@@ -21,21 +21,22 @@
 \newtheorem*{reminder}{Напоминание}
 \newtheorem*{remark}{Замечание}
 \newtheorem*{example}{Пример}
-\newtheorem{prblm}{Задача}
+\newtheorem{prb}{Задача}
 
 \newenvironment{problem}
-{\begin{prblm}
-\label{\theprblm}}
-{\end{prblm}}
+{\begin{prb}
+\label{\theprb}}
+{\end{prb}}
 
-\newcounter{sltn}
-\setcounter{sltn}{1}
 \newenvironment{solution}
-{\begin{proof}[Возможное решение задачи \rm{\ref{\thesltn}}]}
-{\stepcounter{sltn}
-\end{proof}}
+{\begin{proof}[Возможное решение]}
+{\end{proof}}
 
-
+\newcounter{prblmc}
+\setcounter{prblmc}{1}
+\newenvironment{prblm}
+{\renewcommand{\qedsymbol}{}\begin{proof}[Задача \rm{\ref{\theprblmc}}]}
+{\stepcounter{prblmc} \end{proof}}
 
 \let\P\undefined
 
@@ -1452,8 +1453,6 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 \end{example}
 
 \section*{Решения задач}
-
-\setcounter{prblm}{0}
 
 \begin{prblm}
 Пусть $V_1$, $V_2$ --- $k[G]$-модули. Доказать, что
