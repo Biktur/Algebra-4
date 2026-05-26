@@ -148,10 +148,10 @@ $k$ --- поле, $G$ --- конечная группа, $\chr k \nmid |G|$, $V$
 Кольцо $R$ называется \textit{$k$-алгеброй}, если $R$ - векторное пространство над $k$, причём $\lambda(xy) = (\lambda x)y = x(\lambda y)$.
 \end{definition}
 
-Из теоремы выше, $k[G] \simeq L_1^{r_1} \oplus L_2^{r_2} \oplus \ldots \oplus L_m^{r_m}$, $L_i$ --- простые и $L_i \not \simeq L_j$, при $i \neq j$.
+Из рассуждений выше, $k[G] \simeq L_1^{r_1} \oplus L_2^{r_2} \oplus \ldots \oplus L_m^{r_m}$, $L_i$ --- неприводимые и $L_i \not \simeq L_j$, при $i \neq j$.
 
 \begin{proposition}
-Пусть $L$ --- простой идеал в $R$. $M$ --- простой модуль. Тогда если $L \not \simeq M$, то $LM = 0$.
+Пусть $L$ --- неприводимый идеал в $R$. $M$ --- неприводимый модуль. Тогда если $L \not \simeq M$, то $LM = 0$.
 \end{proposition}
 \begin{proof}
 Для любого $m$ определено отображение $l \mapsto lm$. По лемме Шура, все такие отображения нулевые, т. е. $LM = 0$.
@@ -161,7 +161,7 @@ $k$ --- поле, $G$ --- конечная группа, $\chr k \nmid |G|$, $V$
 $e_ie_j = 0$ при $i \neq j$, и $e_i^2 = e_i$. Кроме того, очевидно, $e_i \in Z(k[G])$.
 Если $a_1e_1 + a_2e_2 + \ldots + a_m e_m = 0$, домножая на $e_i$ получаем $a_i = 0$. Значит $m \leq \dim_kZ(k[G])$.
 \begin{theorem}
-Пусть $M$ --- простой $G$-модуль. Тогда для какого-то $i$, $L_i \simeq M$.
+Пусть $M$ --- неприводимый $G$-модуль. Тогда для какого-то $i$, $L_i \simeq M$.
 \end{theorem}
 \begin{proof}
 Для какого-то $i$, $L_iM \neq 0$. Отсюда $L_i \simeq M$.
@@ -177,7 +177,7 @@ $x = \sum\limits_{\sigma \in G} a_\sigma \sigma \in Z(k[G])$,
 $x = \sum\limits_{\sigma \in G} a_\sigma \tau \sigma \tau^{-1}$, для любого $\tau \in G$, т. е. $a_{\tau \sigma \tau^{-1}} = a_\sigma$. Завершить доказательство можно индукцией по числу ненулевых $a_\sigma$.
 
 \begin{remark}
-    Пусть $V$ - одномерное представление. Тогда $V = \langle v \rangle$, где $v \neq 0$, значит, все вектора в $V$ коллинеарны $v$ (т.е. отличаются от $v$ домножением на элемент из $k^*$). Тогда $\forall g \in G \,\exists \chi(g) \in k^* (gv = \chi(g)v)$. Функция $\chi: G \to k^*$ корректно определена, так как значение $\chi(g)$ не зависит от выбора $v$:
+    Пусть $V$ --- одномерное представление. Тогда $V = \langle v \rangle$, где $v \neq 0$, значит, все вектора в $V$ коллинеарны $v$ (т.е. отличаются от $v$ домножением на элемент из $k^*$). Тогда $\forall g \in G \,\exists \chi(g) \in k^* (gv = \chi(g)v)$. Функция $\chi: G \to k^*$ корректно определена, так как значение $\chi(g)$ не зависит от выбора $v$:
     \[
         \chi_{\alpha v}(g)(\alpha v) = g(\alpha v) = \alpha (g v) = \alpha (\chi_v(g) v) = \chi_v(g)(\alpha v) \Ra \chi_{\alpha v} = \chi_v
     \]
@@ -704,9 +704,12 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 	$\C[G] \simeq \C^{\oplus n}$, пусть $\{e_i\}_{i = 1}^n$ --- центральные идемпотенты. Пусть $a = \sum\limits_{\sigma \in G} \alpha_\sigma \sigma = \sum\limits_{i = 1}^n \beta_i e_i$, но у $a$ конечный порядок, обозначим его $m$, а значит $\beta_i^m = 1$. Пусть $\tau$ --- произвольный элемент группы, т. ч. $a_\tau \neq 0$. $\sum\limits_{\sigma \in G} a_\sigma \sigma \tau^{-1}  = \sum\limits_{i = 1}^n \beta_i e_i \tau^{-1}$. Применив регулярный характер, получаем $na_\tau = \sum\limits_{i = 1}^n \beta_i \tau^{-1} \chi_{reg}(e_i\tau^{-1}) = \sum\limits_{i = 1}^n \beta_i \chi_i(\tau^{-1})$. Но $|\beta_i \chi_i(\tau^{-1})| =  1$, значит $\beta_i \chi_i(\tau^{-1}) = \beta_j \chi_j(\tau^{-1}) = a_\tau = \pm 1$, т. е. $\beta_i = \pm \chi_i(\tau)$(знак не зависит от $i$). Т. е., т. к. $\{e_i\}$ --- базис, $a = \pm \tau$.
 \end{proof}
 
-\begin{remark}
-    Далее докажем $\Z[G_1] \simeq \Z[G_2] \Ra \Z[G_1]^* \simeq \Z[G_2]^*$. Из этого и теоремы будет следовать $G_1 \times \Z / 2\Z \simeq G_2 \times \Z / 2\Z$, из чего $G_1 \simeq G_2$.
-\end{remark}
+\begin{theorem}
+Если $G_1, G_2$ --- конечные абелевы группы и $\Z[G_1] \simeq \Z[G_2]$, то $G_1 \simeq G_2$
+\end{theorem}
+\begin{proof}
+    $\Z[G_1] \simeq \Z[G_2] \Ra \Z[G_1]^* \simeq \Z[G_2]^*$. Значит и группы кручений совпадают, т. е., из предыдущей теоремы, $G_1 \times \Z / 2\Z \simeq G_2 \times \Z / 2\Z$, из чего $G_1 \simeq G_2$, например, из теоремы классификации.
+\end{proof}
 
 \begin{remark}
     Заметим, что требование $\ord(a) < +\infty$ в теореме существенно. Пусть $G = \mu_7 = \langle x \rangle$. Тогда
@@ -715,10 +718,6 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
     \end{equation*}
     то есть эти элементы принадлежат $\Z[G]^*$, и при этом не имеют вид $\pm g$, $g \in G$.
 \end{remark}
-
-\begin{theorem}
-Если $G_1, G_2$ --- конечные абелевы группы и $\Z[G_1] \simeq \Z[G_2]$, то $G_1 \simeq G_2$
-\end{theorem}
 
 \begin{lemma}
 $A$ --- коммутативное кольцо, $M$ --- конечнопорождённый модуль над $A$, $\varphi \in \End_A(M)$, тогда $\phi$ --- корень унитального многочлена.
@@ -1048,7 +1047,11 @@ $\dim U = n$, $u_1, u_2, \ldots, u_m \in U$, $m < n$ линейно зависи
 Если теперь вектора линейно независимы, дополнив до базиса, получаем $u_1 \wedge u_2 \wedge \ldots \wedge u_m \wedge \tilde{u}_{m + 1} \wedge \ldots \wedge \tilde{u}_n \neq 0$, значит $u_1 \wedge u_2 \wedge \ldots \wedge u_m \neq 0$ и подавно.
 \end{proof}
 
-Пусть $B \in \Mat_{k \times n}, C \im \Mat_{n \times k}$, если $k > n$, $\det(BC) = 0$, если $k = n$, то $\det(BC) = \det(B) \det(C)$. Если теперь $k \leq n$, пусть $U$ --- векторное пространство размерности $k$, $e_1, e_2, \ldots, e_k$ --- базис.
+\begin{theorem}[Формула Бине--Коши]
+Пусть $B \in \Mat_{k \times n}, C \in \Mat_{n \times k}$, тогда $\det(BC) = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]})$.
+\end{theorem}
+\begin{proof}
+Если $k > n$, $\det(BC) = 0$, если $k = n$, то $\det(BC) = \det(B) \det(C)$. Если теперь $k \leq n$, пусть $U$ --- векторное пространство размерности $k$, $e_1, e_2, \ldots, e_k$ --- базис.
 $$(e_1, e_2, \ldots, e_k)B = (u_1, u_2, \ldots, u_n),$$
 $$(u_1, u_2, \ldots, u_n)C = (v_1, v_2, \ldots, v_k)$$
 $$v_i = \sum_{j = 1}^n a_{ji}e_j$$
@@ -1060,7 +1063,7 @@ $$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) 
 $$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})=$$
 $$= \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k :=$$
 $$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]}) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
-Итого, $\det(BC) = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]})$.
+\end{proof}
 
 \begin{definition}
 $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимым, если $\omega = u_1 \wedge u_2 \wedge \ldots \wedge u_m$
@@ -1158,7 +1161,7 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
 \begin{proof}
     $\Ra$: $w = x \wedge y \Ra w \wedge w = x \wedge y \wedge x \wedge y = 0$.
 
-    $\La$: Проведём индукцию по $\dim U$. База: ???
+    $\La$: Проведём индукцию по $\dim U$. База: n = 0, очевидно
 
     Индукционнный переход: вынесем из $w$ все базисные вектора с $e_n$: $w = w' + v \wedge e_n$, где $w' \in \bigwedge^2 U$, $w'$ в разложении по базису не содержит элементов $\hdots \wedge e_n \wedge \hdots$, а $v \in U$. Тогда
     \begin{align*}
@@ -1463,7 +1466,7 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 \end{enumerate}
 \end{prblm}
 \begin{solution}
-	Билинейность $(v_1, v_2) \mapsto gv_1 \otimes gv_2$ очевидна, так что указанный гомоморфизм определён, по определению, $(g_1g_2)(v_1 \otimes v_2) = g_1(g_2(v_1 \otimes v_2))$, нейтральный действует тривиально. Остаётся доказать второе утверждение. Пусть $\{e_1, e_2, \ldots, e_n\}$ и $\{f_1, f_2, \ldots, f_m\}$ --- базисы $V_1$ и $V_2$, соответственно, и $g(e_i) = \sum_j a_{ji}e_j$, $g(f_i) = \sum_j b_{ji}f_j$. Тогда $g(e_i \otimes f_j) = (\sum_k a_{ki}e_k) \otimes (\sum_l b_{lj} f_l) = \sum_{k, l} a_{ki}b_{lj} e_k \otimes f_l$, т. е. $\chi_{V_1 \otimes_k V_2}(g) = \sum_{i, j} a_{ii} b_{jj} = (\sum_i a_{ii}) (\sum_j b_{jj}) = \chi_{V_1}(g) \chi_{V_2}(g)$.
+	Билинейность $(v_1, v_2) \mapsto gv_1 \otimes gv_2$ очевидна, так что линейное отображение из условия определено, по определению, $(g_1g_2)(v_1 \otimes v_2) = g_1(g_2(v_1 \otimes v_2))$, нейтральный действует тривиально. Остаётся доказать второе утверждение. Пусть $\{e_1, e_2, \ldots, e_n\}$ и $\{f_1, f_2, \ldots, f_m\}$ --- базисы $V_1$ и $V_2$, соответственно, и $g(e_i) = \sum_j a_{ji}e_j$, $g(f_i) = \sum_j b_{ji}f_j$. Тогда $g(e_i \otimes f_j) = (\sum_k a_{ki}e_k) \otimes (\sum_l b_{lj} f_l) = \sum_{k, l} a_{ki}b_{lj} e_k \otimes f_l$, т. е. $\chi_{V_1 \otimes_k V_2}(g) = \sum_{i, j} a_{ii} b_{jj} = (\sum_i a_{ii}) (\sum_j b_{jj}) = \chi_{V_1}(g) \chi_{V_2}(g)$.
 \end{solution}
 
 \begin{prblm}
@@ -1655,7 +1658,7 @@ a_1 & -a_2 & a_3 & \ldots & (-1)^{n + 1} a_n \\
 Доказать, что $S(V) \simeq k[x_1, x_2, \ldots, x_n]$.
 \end{prblm}
 \begin{solution}
-	Рассмотрим отображение $\varphi: V^d \longrightarrow k[x]_d: (\sum_i a_{1i}e_i, \sum_i a_{2i} e_i, \ldots, \sum_i a_{di} e_i) \mapsto (\sum_i a_{1i}x_i)(\sum_i a_{2i} x_i) \ldots (\sum_i a_{di} x_i)$. Оно полилинейно, так что определено отображение из $V^{\otimes n}$, а значит, из симметричности, и отображение $\tilde{\varphi}$ из $S_d$. Отсюда, т. к. мономы линейно независимы, элементы $\{e_{i_1} e_{i_2} \ldots e_{i_d}\}_{i_1 \le i_2 \le \ldots \le i_d}$ --- тоже. Но они всё порождают, а значит $\tilde{\varphi}$ --- изоморфизм. Итого, есть изоморфизм векторных пространств $\Phi: S \rightarrow k[x]$, но он, по построению, и изоморфизм градуированных $k$-алгебр. Ну действительно, гомоморфность (как колец) достаточно проверять для порождающих, для них она очевидна. $\Phi(S_d) = k[x]_d$, по построению.
+	Рассмотрим отображение $\varphi: V^d \longrightarrow k[x]_d$ такое, что $(\sum_i a_{1i}e_i, \sum_i a_{2i} e_i, \ldots, \sum_i a_{di} e_i) \xmapsto{\varphi} (\sum_i a_{1i}x_i)(\sum_i a_{2i} x_i) \ldots (\sum_i a_{di} x_i)$. Оно полилинейно, так что определено отображение из $V^{\otimes n}$, а значит, из симметричности, и отображение $\tilde{\varphi}$ из $S_d$. Отсюда, т. к. мономы линейно независимы, элементы $\{e_{i_1} e_{i_2} \ldots e_{i_d}\}_{i_1 \le i_2 \le \ldots \le i_d}$ --- тоже. Но они всё порождают, а значит $\tilde{\varphi}$ --- изоморфизм. Итого, есть изоморфизм векторных пространств $\Phi: S \rightarrow k[x]$, но он, по построению, и изоморфизм градуированных $k$-алгебр. Ну действительно, гомоморфность (как колец) достаточно проверять для порождающих, для них она очевидна. $\Phi(S_d) = k[x]_d$, по построению.
 \end{solution}
 
 \begin{prblm}
