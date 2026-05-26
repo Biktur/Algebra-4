@@ -501,7 +501,7 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 \end{remark}
 
 \begin{remark}
-    Рассмотрим уже известный нам набор $\{e_i\}$, где $i \neq j \Ra e_i e_j = 0$, $e_i^2 = e_i$, и $1 = e_1 + \hdots + e_s$. Обозначим за $\chi_i$ характер $i$-того слагаемого в регулярном представлении $k[G]$. Тогда
+    Рассмотрим уже известный нам набор $\{e_i\}$, где $i \neq j \Ra e_i e_j = 0$, $e_i^2 = e_i$, и $1 = e_1 + \hdots + e_s$. Обозначим за $\chi_i$ характер $i$-ого неприводимого представления. Тогда
     \begin{equation*}
         \chi_i(e_j) = d_i \delta_{ij} = \begin{cases*}
             d_i, & i = j \\
@@ -701,7 +701,7 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
     Пусть $G$ --- конечная абелева группа, $a \in \Z[G]^*$, $\ord(a) < +\infty$. Тогда $a = \pm g$, где $g \in G$.
 \end{theorem}
 \begin{proof}
-	$\C[G] \simeq \C^{\oplus n}$, пусть $\{e_i\}_{i = 1}^n$ --- центральные идемпотенты. Пусть $a = \sum\limits_{\sigma \in G} \alpha_\sigma \sigma = \sum\limits_{i = 1}^n \beta_i e_i$, но у $a$ конечный порядок, обозначим его $m$, а значит $\beta_i^m = 1$. Пусть $\tau$ --- произвольный элемент группы, т. ч. $a_\tau \neq 0$. $\sum\limits_{\sigma \in G} a_\sigma \sigma \tau^{-1}  = \sum\limits_{i = 1}^n \beta_i e_i \tau^{-1}$. Применив регулярный характер, получаем $na_\tau = \sum\limits_{i = 1}^n \beta_i \tau^{-1} \chi_{reg}(e_i\tau^{-1}) = \sum\limits_{i = 1}^n \beta_i \chi_i(\tau^{-1})$. Но $|\beta_i \chi_i(\tau^{-1})| =  1$, значит $\beta_i \chi_i(\tau^{-1}) = \beta_j \chi_j(\tau^{-1}) = a_\tau = \pm 1$, т. е. $\beta_i = \pm \chi_i(\tau)$(знак не зависит от $i$). Т. е., т. к. $\{e_i\}$ --- базис, $a = \pm \tau$.
+	$\C[G] \simeq \C^{\oplus n}$, пусть $\{e_i\}_{i = 1}^n$ --- центральные идемпотенты. Пусть $a = \sum\limits_{\sigma \in G} \alpha_\sigma \sigma = \sum\limits_{i = 1}^n \beta_i e_i$, но у $a$ конечный порядок, обозначим его $m$, а значит $\beta_i^m = 1$. Пусть $\tau$ --- произвольный элемент группы, т. ч. $a_\tau \neq 0$. $\sum\limits_{\sigma \in G} a_\sigma \sigma \tau^{-1}  = \sum\limits_{i = 1}^n \beta_i e_i \tau^{-1}$. Применив регулярный характер, получаем $na_\tau = \sum\limits_{i = 1}^n \beta_i \chi_{reg}(e_i\tau^{-1}) = \sum\limits_{i = 1}^n \beta_i \chi_i(\tau^{-1})$. Но $|\beta_i \chi_i(\tau^{-1})| =  1$, значит $\beta_i \chi_i(\tau^{-1}) = \beta_j \chi_j(\tau^{-1}) = a_\tau = \pm 1$, т. е. $\beta_i = \pm \chi_i(\tau)$(знак не зависит от $i$). Т. е., т. к. $\{e_i\}$ --- базис, $a = \pm \tau$.
 \end{proof}
 
 \begin{theorem}
@@ -749,7 +749,7 @@ $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d
 \begin{proof}
 	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $k[G]$-модуль, значит $V = V_\alpha$.
 \end{proof}
-$\omega(\hat{K}) = \chi(\hat{K}) = |K| \frac{\chi(g_K)}{\chi(1)}$, где $g_K$ --- представитель класса.
+$\omega(\hat{K}) = \frac{\chi(\hat{K})}{\chi(1)} = |K| \frac{\chi(g_K)}{\chi(1)}$, где $g_K$ --- представитель класса.
 $\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{K})$ --- целое алгебраическое.
 
 \begin{lemma}
@@ -816,7 +816,7 @@ $G$ называется простой, если $G$ не содержит не
 \begin{proof}
     $A = k[x_1, \hdots, x_n]$. Проведём индукцию по $n$. Если $n = 1$, то $A = k[x_1]$. В случае, если $x_1$ алгебраичен над $k$, то $A$ --- конечнопорождённый модуль над $k$ (порождается конечным числом степеней $x_1$). Если же $x_1$ не алгебраичен над $k$, то можно взять $y_1 = x_1$, и тогда $A = k[y_1]$.
 
-    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе перенумеруем $x_1, \hdots, x_n$ таким образом, что первые $r$ алгебраически независимы, где $r = \trdeg A < n$.
+    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе перенумеруем $x_1, \hdots, x_n$ таким образом, что первые $r$ максимальный набор алгебраически независимых.
 
     Распишем определение алгебраической зависимости $x_1, \hdots, x_n$: найдтся полином $f \not\equiv 0$ такой, что $f(x_1, \hdots, x_n) = 0$. Выделим из него степени $x_n$ и рассмотрим старшую из них:
     \begin{equation*}
@@ -1060,8 +1060,8 @@ $$v_1 \wedge v_2 \wedge \ldots \wedge v_k = (c_{11} u_1 + c_{21} u_2 + \ldots + 
 $$(c_{1n}u_1 + c_{2n}u_2 + \ldots + c_{nn} u_n) =$$
 $$ = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det\begin{pmatrix} c_{i_1 1} & c_{i_1 2} & \ldots & c_{i_1 k} \\ c_{i_2 1} & c_{i_2 2} & \ldots & c_{i_2 k} \\ \ldots & \ldots & \ldots  & \ldots \\ c_{i_k 1} & c_{i_k 2} & \ldots & c_{i_k k} \end{pmatrix} u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} :=$$
 $$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} =$$
-$$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})=$$
-$$= \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k :=$$
+$$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})\cdot$$
+$$\cdot \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k :=$$
 $$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]}) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
 \end{proof}
 
@@ -1095,7 +1095,7 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
 \end{equation*}
 Заметим, что при раскрытии скобок слагаемые с пересекающимимся наборами индексов обнулятся. Тогда два набора индексов можно объединить в один набор размера $n$. Поскольку всего базисных векторов $n$, второй набор в таком случае будет в точности дополнением первого. Красткости ради обозначим набор $i_1 < \hdots , i_k$ как $I$, а множество $\{1, \hdots, n\}$ как $[n]$.
 \begin{equation*}
-    u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \sum_{\substack{I \subset [n] \\ |I| = k}} \det(B^I) \det(C^{[n] \setminus I}) \cdot e_I \wedge e_{[n] \setminus I} \cdot (-1)^{\sigma(I, [n] \setminus I)}
+	u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \sum_{\substack{I \subset [n] \\ |I| = k}} \det(B^I) \det(C^{[n] \setminus I}) \cdot e_{[n]} \cdot (-1)^{\sigma(I, [n] \setminus I)}
 \end{equation*}
 В этом равенстве $[n] \setminus I$ рассматривается как упорядоченный набор, а $\sigma(I, [n] \setminus I)$ означает знак перестановки. Множитель $(-1)^{\sigma(I, [n] \setminus I)}$ появляется, потому что, хотя наборы $I$, $[n] \setminus I$ упорядочены сами по себе, они не упорядочены в совокупности, из-за чего в $e_I \wedge e_{[n] \setminus I}$ базисные вектора могут стоять в неправильном порядке.
 
@@ -1399,7 +1399,7 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
     \end{equation*}
 \end{definition}
 
-На самом деле, проективную систему можно воспримнимать как функтор из категории $I$(где объекты --- элементы, стрелки --- отношение порядка) в категорию абелевых групп.
+На самом деле, проективную систему можно воспримнимать как функтор из категории $I$(где объекты --- элементы, стрелки --- отношение порядка) в категорию абелевых групп, так что определение проективного предела несложно перенести на категорию колец.
 
 \begin{definition}[Кольцо $p$-адических чисел]
 Пусть $p$ --- простое число, рассмотрим систему
@@ -1437,14 +1437,14 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 
 \begin{equation*}
 \begin{tikzcd}
-\Mor(\F X, Y) \rar[leftrightarrow]{\varphi_{X, Y}} \dar{f} & \Mor(X, \G Y) \dar{g} \\
+\Mor(\F X, Y) \rar[leftrightarrow]{\varphi_{X, Y}} \dar{\F(f), g} & \Mor(X, \G Y) \dar{f, \G(g)} \\
 \Mor(\F X', Y') \rar[leftrightarrow]{\varphi_{X', Y'}} & \Mor(X', \G Y')
 \end{tikzcd}
 \end{equation*}
 коммутативна. Тогда $\F, \G$ называются сопряжёнными, $\F$ --- левый сопряжённый к $\G$, $\G$ --- правый сопряжённый к $\F$.
 
 \begin{example}
-	$\F: \mathrm{Groups} \rightarrow k\operatorname{-alg}: \G \rightarrow k[G]$, $\G: A \rightarrow A^*$. Докажем, что $\F$ и $\G$ сопряжены. $\Mor(k[G], A) \simeq \Mor(G, A^*)$. Ну дествительно, отображение слева направо --- сужение, справа налево --- продолжение по линейности.
+	$\F: \mathrm{Groups} \rightarrow k\operatorname{-alg}: \G \rightarrow k[G]$, $\G: A \rightarrow A^*$. Докажем, что $\F$ и $\G$ сопряжены. $\Mor(k[G], A) \simeq \Mor(G, A^*)$. Ну действительно, отображение слева направо --- сужение, справа налево --- продолжение по линейности.
 \end{example}
 
 \begin{example}
