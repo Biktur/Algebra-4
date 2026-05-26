@@ -1598,7 +1598,7 @@ i & 0
     Используя лемму Нётер и предыдущую задачу, докажите, что $\dim k[t_1, \hdots, t_n] = n$.
 \end{prblm}
 \begin{solution}
-Докажем и нндукцией по $n$. База $n = 0$ --- $\dim k = 0$. $\dim k[t_1, t_2, \ldots, t_n] \ge n$, т. к. есть последовательность $(0) \subsetneq (t_1) \subsetneq (t_1, t_2) \subsetneq \ldots \subsetneq (t_1, t_2, \ldots, t_n)$. Пусть $0 \subsetneq \p_0 \subsetneq \p_1 \ldots \subsetneq \p_k$ --- последовательность простых, тогда, если $B = k[t_1, t_2, \ldots, t_n] / \p_0$, $\trdeg B < n$, значит, по лемме Нётер, найдутся алгебраически независимые $x_1, x_2, \ldots, x_m$, где $m < n$, т. ч. $B$ --- конечнопорождённый модуль над $A := k[x_1, x_2, \ldots, x_m]$, но по индукции $\dim A = m$, значит, из предыдущей задачи, $\dim B \le m \le n - 1$, т. е. $k \le \dim B + 1 \le n$.
+	Докажем и нндукцией по $n$. База $n = 0$ --- $\dim k = 0$. $\dim k[t_1, t_2, \ldots, t_n] \ge n$, т. к. есть последовательность $(0) \subsetneq (t_1) \subsetneq (t_1, t_2) \subsetneq \ldots \subsetneq (t_1, t_2, \ldots, t_n)$. Пусть $0 \subsetneq \p_0 \subsetneq \p_1 \ldots \subsetneq \p_k$ --- последовательность простых, тогда, если $B = k[t_1, t_2, \ldots, t_n] / \p_0$, значит $\{t_1, t_2, \ldots, t_n\}$ алгебраически зависимы, так что, по лемме Нётер, найдутся алгебраически независимые $x_1, x_2, \ldots, x_m$, где $m < n$, т. ч. $B$ --- конечнопорождённый модуль над $A := k[x_1, x_2, \ldots, x_m]$, но по индукции $\dim A = m$, значит, из предыдущей задачи, $\dim B \le m \le n - 1$, т. е. $k \le \dim B + 1 \le n$.
 \end{solution}
 
 \begin{prblm}
