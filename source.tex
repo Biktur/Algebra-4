@@ -65,6 +65,8 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
 \newcommand{\F}{\mathscr{F}}
 \newcommand{\G}{\mathscr{G}}
 \newcommand{\p}{\mathfrak{p}}
@@ -164,7 +166,7 @@ $e_ie_j = 0$ при $i \neq j$, и $e_i^2 = e_i$. Кроме того, очев�
 Пусть $M$ --- неприводимый $G$-модуль. Тогда для какого-то $i$, $L_i \simeq M$.
 \end{theorem}
 \begin{proof}
-Для какого-то $i$, $L_iM \neq 0$. Отсюда $L_i \simeq M$.
+	Для какого-то $i$, $L_iM \neq 0$, ведь $k[G]M = M$. Отсюда $L_i \simeq M$.
 \end{proof}
 
 Для $g \in G$ рассмотрим $K_g = \{hgh^{-1} \mid h \in G\}$.
@@ -172,12 +174,14 @@ $e_ie_j = 0$ при $i \neq j$, и $e_i^2 = e_i$. Кроме того, очев�
 \begin{theorem}
 $\{\hat{K}_g\}_{g \in I}$, где $I$ --- множество представителей классов сопряжённости, составляют базис $Z(k[G])$.
 \end{theorem}
+\begin{proof}
 $\hat{K}_g$, очевидно, лежит в центре при любом $g \in G$. С другой стороны, если
 $x = \sum\limits_{\sigma \in G} a_\sigma \sigma \in Z(k[G])$,
 $x = \sum\limits_{\sigma \in G} a_\sigma \tau \sigma \tau^{-1}$, для любого $\tau \in G$, т. е. $a_{\tau \sigma \tau^{-1}} = a_\sigma$. Завершить доказательство можно индукцией по числу ненулевых $a_\sigma$.
+	\end{proof}
 
 \begin{remark}
-    Пусть $V$ --- одномерное представление. Тогда $V = \langle v \rangle$, где $v \neq 0$, значит, все вектора в $V$ коллинеарны $v$ (т.е. отличаются от $v$ домножением на элемент из $k^*$). Тогда $\forall g \in G \,\exists \chi(g) \in k^* (gv = \chi(g)v)$. Функция $\chi: G \to k^*$ корректно определена, так как значение $\chi(g)$ не зависит от выбора $v$:
+    Пусть $V$ --- одномерное представление. Тогда $V = \langle v \rangle$, где $v \neq 0$, значит, все вектора в $V$ коллинеарны $v$ (т. е. отличаются от $v$ домножением на элемент из $k^*$). Тогда $\forall g \in G \,\exists \chi(g) \in k^* (gv = \chi(g)v)$. Функция $\chi: G \to k^*$ корректно определена, так как значение $\chi(g)$ не зависит от выбора $v$:
     \[
         \chi_{\alpha v}(g)(\alpha v) = g(\alpha v) = \alpha (g v) = \alpha (\chi_v(g) v) = \chi_v(g)(\alpha v) \Ra \chi_{\alpha v} = \chi_v
     \]
@@ -302,7 +306,7 @@ $$= \lambda_{\sigma^{-1}(1)} e_1 + \lambda_{\sigma^{-1}(2)} e_2 + \lambda_{\sigm
 Т. к. представление --- это отображение $\rho: k[G] \rightarrow \End_k(V)$. Ествественно возникает следующее понятие:
 
 \begin{definition}
-	Характером представления $\rho$ называется линейное отображение $\chi: k[G] \rightarrow k$, т. ч. $\chi(x) = \Tr(\rho(x))$.
+	Характером представления $\rho$ называется линейное отображение $\chi: k[G] \rightarrow k: x \mapsto \Tr(\rho(x))$.
 \end{definition}
 
 Пусть $k$ --- алгебраически замкнуто, $n = \ord(g)$, тогда $\rho(g)^n = 1$, т. е. $\prod\limits_{\zeta \in \mu_n(k)}(\rho(g) - \zeta I) = 0$, но тогда $V = \bigoplus\limits_{\zeta \in \mu_n(k)} V_{\zeta}$, где $V_{\zeta}$ --- собственные подпространства.
@@ -392,7 +396,7 @@ $k[G] = L_1^{d_1} \oplus L_2^{d_2} \oplus \ldots \oplus L_s^{d_s}$, $L_i \not\si
 Пусть $A = L_i^{d_i}$, тогда $A \simeq \End_A(A)^o$. % пожалуй стоит написать что такое ^o
 \end{proposition}
 \begin{proof}
-Пусть $a \mapsto (x \mapsto xa)$, гомоморфность проверяется непосредственно. Инъективность очевидна. Пусть теперь $\phi$ --- эндоморфизм, тогда $\phi(x) = x\phi(1)$, положив $a = \phi(1)$, получаем искомое.
+Пусть $a \mapsto (x \mapsto xa)$, то, что это отображение гомоморфизм, проверяется непосредственно. Инъективность очевидна. Пусть теперь $\phi$ --- эндоморфизм, тогда $\phi(x) = x\phi(1)$, положив $a = \phi(1)$, получаем искомое.
 \end{proof}
 
 \begin{lemma}
@@ -405,8 +409,8 @@ $\End_A(L^d) \simeq M_d(D)$, где $D = End_A(L)$(как мы помним, и�
 \end{tikzcd}
 \end{equation*}
 $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
-	Определим $H: End_A(L^d) \rightarrow M_d(D): \phi \mapsto (\phi_{jk})$
-	Проверим гомоморфность $H(\phi) H(\psi) = \sum\limits_k \phi_{jk} \psi_{kl} = \pi_j \circ \phi \circ \psi \circ i_l = H(\phi \circ \psi)$.
+	Определим $H: End_A(L^d) \rightarrow M_d(D): \phi \mapsto (\phi_{jk}).$
+	Проверим, что $H$ ---  гомоморфизм. $(H(\phi) H(\psi)_{jl} = \sum\limits_k \phi_{jk} \psi_{kl} = \pi_j \circ \phi \circ \psi \circ i_l = (H(\phi \circ \psi))_{jl}$.
 \end{proof}
 
 \begin{problem}
@@ -425,24 +429,25 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 \end{problem}
 
 \begin{remark}
-    Обозначим $A_i = L_i^{d_i}$. Тогда, как мы уже знаем, $k[G] = A_1 \times \hdots \times A_s$. Обозначим $A = A_i$. $A \simeq L^d$ как $G$-модуль. $L$ --- неприводимый $G$-модуль. Тогда верна следующая цепочка изоморфностей:
+    Обозначим $A_i = L_i^{d_i}$. Тогда, как мы уже знаем, $k[G] = A_1 \times \hdots \times A_s$. Обозначим $A = A_i$. $A \simeq L^d$ как $G$-модуль. $L$ --- неприводимый $G$-модуль. Тогда есть следующая цепочка изоморфизмов:
     \begin{equation*}
         A \simeq \End_A(A)^o = \End_A(L^d)^o \simeq M_d(\End_A(L))^o
     \end{equation*}
-    Обозначим $\tilde{D} = \End_A(L)$. Тогда $M_d(\tilde{D})^o \simeq M_d(\tilde{D}^o)$ --- изоморфизмом является транспонирование матрицы. Для краткости обозначим $D = \tilde{D}^o$. Используя изоморфизмы выше, получаем
+    Обозначим $\tilde{D} = \End_A(L)$. Тогда $M_d(\tilde{D})^o \simeq M_d(\tilde{D}^o)$, изоморфизмом является транспонирование матрицы. Для краткости обозначим $D = \tilde{D}^o$. Используя изоморфизмы выше, получаем
     \begin{equation*}
         k[G] \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(\tilde{D_i})^o \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(D_i)
     \end{equation*}
-
-    $k' = \{\varphi_x: L \overset{\cdot x}{\to} L | x \in k\} \subset \End_A(L)$. $k' \simeq k$, $\dim_{k'}(\End_A(L)) < \infty$.
 \end{remark}
 
 \begin{proposition}
-    Пусть $k = \overline{k}$, обозначим $D = \End_A(L)$. Тогда из замечания выше следует, что $k \subset D$, $\dim_k(D) < \infty$. 
+    Пусть $D = \End_A(L)$. Тогда $k \subset D$, $\dim_k(D) < \infty$. 
 \end{proposition}
+\begin{proof}
+	Первое утверждение очевидно. Т. к. $\End_A(L) \subseteq \End_k(L)$, $\dim_k D \le \dim_k M_d(k) < \infty$.
+\end{proof}
 
 \begin{proposition}
-    $k = \overline{k}$, $D$ --- тело, $k \subset D$, $\dim_k(D) < \infty$. Тогда $D = k$.
+    $k$ алгебраически замкнуто, $D$ --- тело, $k \subset D$, $\dim_k(D) < \infty$. Тогда $D = k$.
 \end{proposition}
 \begin{proof}
     Рассмотрим $d \in D$. Ему можно сопоставить промежуточное расширение $L$:
@@ -452,14 +457,16 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
     $L$ --- поле, $[L : k] < \infty$, значит, $L/k$ --- алгебраическое расширение. Но $k$ алгебраически замкнуто, значит, $L = k$, т.е. $d \in L = k$.
 \end{proof}
 
+Для алгебраически замкнутых полей получаем $k[G] \simeq \prod M_{d_i}(k)$.
+
 \begin{definition}
-    $k = \overline{k} \Ra k[G] = \prod M_{d_i}(k)$. Такое представление называют \textit{регулярным}.
+	$k[G]$, рассматриваемое как модуль над собой, называют \textit{регулярным представлением}.
 \end{definition}
 
 \begin{remark}
     Рассмотрев размерность обеих частей регулярного представления, получаем, что $|G| = \sum_{i=1}^s d_i^2$. Это соответствует случаям $G = S_3, S_4$, которые мы разобрали ранее.
 
-    Как известно, если $G$ абелева, то все её неприводимые представления одномерны, т.е. все $d_i = 1$. Таким образом, если $G$ абелева и $k = \overline{k}$, то $k[G] = k \times \hdots \times k = k^{|G|}$.
+    Как известно, если $G$ абелева, то все её неприводимые представления одномерны, т.е. все $d_i = 1$. Таким образом, если $G$ абелева и $k$ алгебраически замкнуто, то $k[G] = k \times \hdots \times k = k^{|G|}$.
 \end{remark}
 
 \begin{remark}
@@ -511,9 +518,8 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
     \begin{gather*}
         e_i = \sum_{\sigma \in G} a_\sigma \sigma \Ra e_i \tau^{-1} = \sum_{\sigma \in G} a_\sigma \sigma \tau^{-1} \\
         \chi_{reg}(e_i \tau^{-1}) = \sum_{\sigma \in G} a_\sigma \chi_{reg}(\sigma \tau^{-1}) = a_\tau |G| \Ra \\
-        \Ra a_\tau = \frac{\chi_{reg}(e_i \tau^{-1})}{|G|} = \frac{1}{|G|} \sum_{j = 1}^s d_j \chi_j(e_i \tau^{-1}) = \frac{1}{|G|} d_i \chi_i (e_i \tau^{-1}) \oeq \\
-        \tau^{-1} = 1 \cdot \tau^{-1} = \sum e_j \tau^{-1} \Ra \chi_i(\tau^{-1}) = \sum \chi_i(e_j \tau^{-1}) = \chi_i(e_i \tau^{-1}) \\
-        \oeq \frac{1}{|G|} d_i \chi_i(\tau^{-1})
+        \Ra a_\tau = \frac{\chi_{reg}(e_i \tau^{-1})}{|G|} = \frac{1}{|G|} \sum_{j = 1}^s d_j \chi_j(e_i \tau^{-1}) = \frac{1}{|G|} d_i \chi_i (e_i \tau^{-1}) = \\
+        = \frac{1}{|G|} d_i \chi_i(\tau^{-1})
     \end{gather*}
     Подставляя полученное выражение для $a_\tau$ в $e_i = \sum a_\tau \tau$, получаем
     \begin{equation*}
@@ -534,7 +540,7 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 \end{proof}
 
 \begin{remark}
-    Рассмотрим $M = \{f: G \to k \,|\, \forall g, h \in G (f(g h g^{-1}) = f(g))\}$ --- модуль функций на классах сопряжённых элементов. Этих классов $s$, значит, $\dim_k M \leq s$. С другой стороны, мы только что нашли $s$ линейно независимых элементов в $M$, значит, $\dim_k M \geq s$. Итого, $\dim_k M = s$.
+    Рассмотрим $M = \{f: G \to k \,|\, \forall g, h \in G (f(g h g^{-1}) = f(g))\}$ --- векторное пространство функций на классах сопряжённых элементов. Этих классов $s$, значит, $\dim_k M \leq s$. С другой стороны, мы только что нашли $s$ линейно независимых элементов в $M$, значит, $\dim_k M \geq s$. Итого, $\dim_k M = s$.
 \end{remark}
 
 \begin{problem}
@@ -554,7 +560,7 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 \end{proof}
 
 \begin{definition}
-	$X_k(G)$ --- векторное пространство функций классов(базис --- неприводимые характеры)
+	$X_k(G)$ --- векторное пространство функций классов.
 \end{definition}
 
 На $X_k(G)$ определена билинейная форма $(f, g) \mapsto \frac{1}{n} \sum f(\tau^{-1}) g(\tau)$. Из вышесказанного, $(\chi_i, \chi_j) \mapsto \delta_{ij}$.
@@ -573,7 +579,7 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 \end{definition}
 
 \begin{example}
-Построим таблицу характеров для $S_3$. За представителей классов возьмём $\{id, (12), (123)\}$.
+Построим таблицу характеров для $S_3$. В качестве представителей классов возьмём $\{id, (12), (123)\}$.
 \begin{table}[h!]
 \begin{tabular}{C|C|C|C}
 & id & (12) & (123) \\ \hline
@@ -582,7 +588,8 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 \chi_3 & 2 & 0 & -1
 \end{tabular}
 \end{table}
-	Нетривиально только последнее. Найдём $\chi_3((12))$. $e_1 - e_2 \xmapsto{(12)} -(e_1 - e_2)$, $e_2 - e_3 \xmapsto{(12)} (e_1 - e_2) + (e_2 - e_3)$, т. е. $\chi_3((12) = 0$. Найдём теперь $\chi_3((123))$. $e_1 - e_2 \xmapsto{(123)} e_2 - e_3$, $e_2 - e_3 \xmapsto{(123)} -(e_1 - e_2) - (e_2 - e_3)$. Т. е. $\chi_3((123)) = -1$. Нетрудно понять, что мы могли бы найти $\chi_3((12))$ и $\chi_3((123))$, не зная ничего о представлении, используя лишь соотношения ортогональности.
+
+Нетривиальна только последняя строка. Найдём $\chi_3((12))$. $e_1 - e_2 \xmapsto{(12)} -(e_1 - e_2)$, $e_2 - e_3 \xmapsto{(12)} (e_1 - e_2) + (e_2 - e_3)$, т. е. $\chi_3((12) = 0$. Найдём теперь $\chi_3((123))$. $e_1 - e_2 \xmapsto{(123)} e_2 - e_3$, $e_2 - e_3 \xmapsto{(123)} -(e_1 - e_2) - (e_2 - e_3)$. Т. е. $\chi_3((123)) = -1$. Нетрудно понять, что мы могли бы найти $\chi_3((12))$ и $\chi_3((123))$, не зная ничего о представлении, используя лишь соотношения ортогональности.
 \end{example}
 
 \begin{problem}
@@ -692,7 +699,7 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
 
 
 \begin{remark}
-    Пусть $G_1, G_2$ --- группы, $k[G_1], k[G_2]$ --- соответствующие групповые кольца, причём $k[G_1] \simeq k[G_2]$. Вообще говворя, из этого не следует, что $G_1 \simeq G_2$: например, если $G_1, G_2$ --- различные абелевы группы порядка $n$, то $k[G_1] \simeq k[G_2] \simeq k^{|G|} = k^n$.
+    Пусть $G_1, G_2$ --- группы, $k[G_1], k[G_2]$ --- соответствующие групповые кольца, причём $k[G_1] \simeq k[G_2]$. Вообще говоря, из этого не следует, что $G_1 \simeq G_2$: например, если $G_1, G_2$ --- различные абелевы группы порядка $n$, то $k[G_1] \simeq k[G_2] \simeq k^{|G|} = k^n$.
 
     Однако, если наложить дополнительные ограничения, то такой вывод сделать можно: оказывается, например, что если $G_1, G_2$ абелевы, то $\Z[G_1] \simeq \Z[G_2] \Ra G_1 \simeq G_2$.
 \end{remark}
@@ -719,23 +726,23 @@ $\frac{1}{n}\sum \chi_i(\tau^{-1}) \chi_j(\tau) = \delta_{ij}$, т. к. $\chr k 
     то есть эти элементы принадлежат $\Z[G]^*$, и при этом не имеют вид $\pm g$, $g \in G$.
 \end{remark}
 
-\begin{lemma}
-$A$ --- коммутативное кольцо, $M$ --- конечнопорождённый модуль над $A$, $\varphi \in \End_A(M)$, тогда $\phi$ --- корень унитального многочлена.
-\end{lemma}
+\begin{theorem}[Гамильтон--Кэли]
+$A$ --- коммутативное кольцо, $M$ --- конечнопорождённый модуль над $A$, $\varphi \in \End_A(M)$, тогда $\varphi$ --- корень унитального многочлена.
+\end{theorem}
 \begin{proof}
 \begin{equation*}
-\begin{tikzcd}
+    \begin{tikzcd}
 A^n \rar{\tilde{\varphi}} \dar & A^n \dar \\
 M \rar{\varphi} & M
 \end{tikzcd}
 \end{equation*}
-$\tilde{\varphi}$ обнуляется своим характеристическим, значит и $\varphi$ обнуляется.
+Т. к. $M$ --- конечнопорождённый, существует сюръективное линейное отображение $A^n \rightarrow M$. Из проективности $A^n$, $\varphi$ можно поднять до отображение $\tilde{\varphi}: A^n \rightarrow A^n$. $\tilde{\varphi}$ обнуляется своим характеристическим многочленом по обычной теореме Гамильтона--Кэли, значит и $\varphi$ обнуляется.
 \end{proof}
 \begin{theorem}
 $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d$ --- степень неприводимого представления, тогда $d | n$.
 \end{theorem}
 \begin{proof}
-	$\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau$, пусть $r = \frac{n}{d_i}$. Умножим на $e_i$. $\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau e_i$. Рассмотрим теперь абелеву группу $A$, порождённую $\zeta_n^k \sigma e_i$. Рассмотрим в $A$ эндоморфизм умножение на $r$. Поймём для начала, почему это эндоморфизм. $r\zeta_n^k \sigma e_i = \sum \zeta_n^k \sigma \chi_i(\tau^{-1})\tau e_i \in A$. Значит $f(r) = 0$.
+	$\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau$, пусть $r = \frac{n}{d_i}$. Умножим на $e_i$. $\frac{n}{d_i}e_i = \sum\limits_{\tau \in G} \chi_i(\tau^{-1})\tau e_i$. Рассмотрим теперь абелеву группу $A$, порождённую $\zeta_n^k \sigma e_i$. Рассмотрим в $A$ эндоморфизм умножения на $r$. Поймём для начала, почему это эндоморфизм. $r\zeta_n^k \sigma e_i = \sum \zeta_n^k \sigma \chi_i(\tau^{-1})\tau e_i \in A$. Значит $r$ --- корень многочлена со старшим коэффициентом 1, значит $r \in \Z$.
 \end{proof}
 
 \begin{theorem}[Бернсайд]
@@ -744,19 +751,19 @@ $k$ --- алгебраически замкнутое поле, $\chr k = 0$, $d
 Докажем сначала несколько вспомогательных утверждений.
 
 \begin{proposition}
-	Пусть $G$ --- конечная группа, $k = \C$, V --- неприводимый $G$-модуль, тогда найдётся гомоморфизм $Z(k[G]) \xrightarrow{\omega} k$, т. ч. $zv = \omega(z)v$. 
+	Пусть $G$ --- конечная группа, $k = \C$, V --- неприводимый $G$-модуль, тогда найдётся гомоморфизм $k$-алгебр $Z(k[G]) \xrightarrow{\omega} k$, т. ч. $zv = \omega(z)v$. 
 \end{proposition}
 \begin{proof}
-	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $k[G]$-модуль, значит $V = V_\alpha$.
+	Пусть $\alpha$ --- собственное число $z$, $V_\alpha \subset V$ --- собственное подпространство. Докажем, что $V_\alpha = V$. Если $g \in G$, $v\in V_\alpha$, $zgv = gzv = \alpha gv$, т. е. $V_\alpha$ --- $G$-подмодуль, но $V$ --- неприводимый $G$-модуль, значит $V = V_\alpha$.
 \end{proof}
 $\omega(\hat{K}) = \frac{\chi(\hat{K})}{\chi(1)} = |K| \frac{\chi(g_K)}{\chi(1)}$, где $g_K$ --- представитель класса.
-$\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega{\hat{K}_i}\omega{\hat{K}_j} = \sum a_i \omega{\hat{K}_i}$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{K})$ --- целое алгебраическое.
+$\hat{K}_1\hat{K}_2$ --- линейная комбинация классовых сумм с целыми коэффициентами. $\omega(\hat{K}_i)\omega(\hat{K}_j) = \sum a_i \omega(\hat{K}_i)$. Пусть теперь $A$ --- абелева группа порождённая всеми $\omega(\hat{K})$, тогда умножение на $\omega(\hat{K})$ --- эндоморфизм, значит $\omega(\hat{K})$ --- целое алгебраическое.
 
 \begin{lemma}
 	Если $(|K|, \chi(1)) = (1)$, то или $|\chi(g_K)| = \chi(1)$, или $\chi(g_K) = 0$.
 \end{lemma}
 \begin{proof}
-	Пусть $a|K| + b\chi(1) = 1$. Тогда $\frac{a|K| \chi(g_K)}{\chi(1)} = \frac{\chi(g_K)}{\chi(1)} - b\chi(g_K) \in \O$. Значит $\alpha = \frac{\chi(g_K)}{\chi(1)} \in O$. Пусть теперь $|\chi(g_K)| < \chi(1)$, тогда $|\N(\alpha)| = |\prod\limits_{\sigma \in Gal(\Q(\zeta_n) / \Q)} \sigma\alpha| < 1$, т. к. корни переходят в корни, но $\N(\alpha) \in \Z$, значит $\N(\alpha) = 0$, т. е. $\alpha = 0$.
+	Пусть $a|K| + b\chi(1) = 1$. Тогда $\frac{\chi(g_K)}{\chi(1)} = \frac{a|K| \chi(g_K)}{\chi(1)} + b\chi(g_K) \in \O$. Значит $\alpha = \frac{\chi(g_K)}{\chi(1)} \in O$. Пусть теперь $|\chi(g_K)| < \chi(1)$, тогда $|\N(\alpha)| = |\prod\limits_{\sigma \in Gal(\Q(\zeta_n) / \Q)} \sigma\alpha| < 1$, т. к. корни переходят в корни, но $\N(\alpha) \in \Z$, значит $\N(\alpha) = 0$, т. е. $\alpha = 0$.
 \end{proof}
 
 \begin{definition}
@@ -764,18 +771,18 @@ $G$ называется простой, если $G$ не содержит не
 \end{definition}
 
 \begin{lemma}[Бернсайд]
-	Если $G$ --- простая неабелева конечная группа, $K$ --- класс сопряжённости и $|K| = p^a$, где $p$ --- простое, то $K = {1}$.
+	Если $G$ --- простая неабелева конечная группа, $K$ --- класс сопряжённости и $|K| = p^a$, где $p$ --- простое, то $K = \{1\}$.
 \end{lemma}
 \begin{proof}
-	Пусть $\chi \neq 1$ --- неприводимый характер, $x_k \neq 1$. Пусть $|\chi(x_k)| = \chi(1)$. Пусть $v \in V_\chi$, $g \in G$, тогда $gx_kg^{-1}x_k^{-1}v = v$. Но $G$ --- простая, так что $G \rightarrow \Aut_\C(V_\chi)$ --- вложение, значит $x_k \in Z(G)$, значит $Z(G) = G$. Противоречие.
+	Пусть $\chi \neq 1$ --- неприводимый характер, $x_k \neq 1$. Пусть $|\chi(x_k)| = \chi(1)$, т. е. $\rho(g)$ --- скалярная, а значит $\rho(gx_kg^{-1}x_k^{-1}) = 1$. Но $G$ --- простая, так что $\rho: G \rightarrow \Aut_\C(V_\chi)$ --- вложение, значит $x_k \in Z(G)$, значит $Z(G) = G$. Противоречие.
 	Отсюда, если $(|K|, \chi(1)) = (1)$, то $\chi(x_k) = 0$, иначе говоря, если $p \nmid \chi(1)$, $\chi(x_k) = 0$. $\chi_{reg}(x_k) = \sum \chi_i(1) \chi_i(x_k) = 1 + \sum\limits_{p | \chi(1)} \chi_i(1) \chi_i(x_k) = 1 + p \beta$, но $\beta \in \O$, т. е. $-\frac{1}{p} \in \O$. Противоречие.
 \end{proof}
 
-\begin{proof}
+\begin{proof}[Доказательство теоремы]
 	Индукция по $G$.
 	\begin{enumerate}
 	\item $G$ --- не простая. Если $N$ --- нетривиальная собственная нормальная подгруппа, по индукции, $G / N$ и $N$ разрешимы, значит и $G$ разрешима.
-	\item $G$ --- простая. Пусть $P$ --- произвольная $p$-Силовская подгруппа. Её центр нетривиален. Пусть $K$ --- класс сопряжённости произвольного неединичного элемента $x \in Z(P)$. $|K| = \frac{|G|}{|C_G(x)|} = q^{b'}$.
+	\item $G$ --- простая. Пусть $P$ --- произвольная $p$-Силовская подгруппа. Её центр нетривиален. Пусть $K$ --- класс сопряжённости произвольного неединичного элемента $x \in Z(P)$. $|K| = \frac{|G|}{|C_G(x)|} = q^{b'}$. Из предыдущей леммы получаем противоречие.
 	\end{enumerate}
 \end{proof}
 
@@ -791,7 +798,7 @@ $G$ называется простой, если $G$ не содержит не
 	Пусть $k \subset k(x_1, x_2, \ldots, x_m)  \subset F$, $k \subset k(u_1, u_2, \ldots, u_n) \subset F$, где $x_i$ алгебраически независимы, $F/k(x_1, \ldots, x_m)$ --- конечное, а $u_i$ алгебраически независимы. Тогда $n \leq m$.
 \end{theorem}
 \begin{proof}
-	Пусть $n > m$. $u_1$ алгебраичен над $k(x_1, x_2, \ldots, x_m)$, значит найдётся многочлен $f$, т. ч. $f(u_1, x_1, \ldots, x_m) = 0$, причём, т. к. $u_1$ трансцендентен, не умаляя общности, $x_1$ входит в $f$ в ненулевой степени, значит $x_1$ алгебраичен над $k(u_1, x_2, \ldots, x_m)$. Продолжая процесс, получаем, что $F / k(u_1, u_2, \ldots, u_m)$ конечно. Противоречие с трансцендентностью $k(u_1, u_2, \ldots, u_m, u_{m + 1}) / k(u_1, u_2, \ldots, u_m)$.
+	Пусть $n > m$. $u_1$ алгебраичен над $k(x_1, x_2, \ldots, x_m)$, значит найдётся многочлен $f$, т. ч. $f(u_1, x_1, \ldots, x_m) = 0$, причём, т. к. $u_1$ трансцендентен, не умаляя общности, $x_1$ входит в $f$ в положительной степени, значит $x_1$ алгебраичен над $k(u_1, x_2, \ldots, x_m)$. Продолжая процесс, получаем, что $F / k(u_1, u_2, \ldots, u_m)$ конечно. Противоречие с трансцендентностью $k(u_1, u_2, \ldots, u_m, u_{m + 1}) / k(u_1, u_2, \ldots, u_m)$.
 \end{proof}
 
 
@@ -799,7 +806,7 @@ $G$ называется простой, если $G$ не содержит не
 	Если теперь $F / k(u_1, u_2, \ldots, u_n)$ конечно, то $m = n$. $n$ называется степенью трансцендентности $F/k$.
 \end{corollary}
 \begin{proof}
-	Из предыдущей теоремы $m \leq n$ и $n \leq m$.
+	Из предыдущей теоремы, $m \leq n$ и $n \leq m$.
 \end{proof}
 
 \begin{remark}
@@ -811,17 +818,17 @@ $G$ называется простой, если $G$ не содержит не
 \end{remark}
 
 \begin{lemma}[Нётер о нормализации]
-    Пусть $A$ --- конечнопорождённая алгебра над $k$. Тогда найдутся алгебраически независимые $y_1, \hdots, y_l \in A$ (возможно, $l = 0$) такие, что $A$ --- конечнопорождённый модуль над $k[y_1, \hdots, y_l]$.
+    Пусть $A$ --- конечнопорождённая алгебра над $k$, $A \neq 0$. Тогда найдутся алгебраически независимые $y_1, \hdots, y_l \in A$ (возможно, $l = 0$) такие, что $A$ --- конечнопорождённый модуль над $k[y_1, \hdots, y_l]$.
 \end{lemma}
 \begin{proof}
-    $A = k[x_1, \hdots, x_n]$. Проведём индукцию по $n$. Если $n = 1$, то $A = k[x_1]$. В случае, если $x_1$ алгебраичен над $k$, то $A$ --- конечнопорождённый модуль над $k$ (порождается конечным числом степеней $x_1$). Если же $x_1$ не алгебраичен над $k$, то можно взять $y_1 = x_1$, и тогда $A = k[y_1]$.
+    $A = k[x_1, \hdots, x_n]$. Проведём индукцию по $n$. Если $n = 0$, то $A = k$.
 
-    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе перенумеруем $x_1, \hdots, x_n$ таким образом, что первые $r$ максимальный набор алгебраически независимых.
-
-    Распишем определение алгебраической зависимости $x_1, \hdots, x_n$: найдтся полином $f \not\equiv 0$ такой, что $f(x_1, \hdots, x_n) = 0$. Выделим из него степени $x_n$ и рассмотрим старшую из них:
+    Индукционнный переход: пусть $A = k[x_1, \hdots, x_n]$. Если набор $\{x_1, \hdots, x_n\}$ алгебраически независим, то можно взять $y_i = x_i$. Иначе, найдётся многочлен $f \not\equiv 0$ такой, что $f(x_1, \hdots, x_n) = 0$. Выделим из него степени $x_n$ и рассмотрим старшую из них:
     \begin{equation*}
-        f(x_1, \hdots, x_n) = a(x_1, \hdots, x_{n-1}) \cdot x_n^s + \hdots = 0
+        f(x_1, \hdots, x_n) = a(x_1, \hdots, x_{n-1}) \cdot x_n^s + \hdots = 0,
     \end{equation*}
+    не умаляя общнсоти, $s \neq 0$. 
+    
     Разберём два случая.
 
     Если $a(x_1, \hdots, x_{n-1}) = const \in k$, то воспользуемся индукционным предположением для $n-1$:
@@ -853,38 +860,15 @@ $G$ называется простой, если $G$ не содержит не
     Пусть $k$ --- поле, $A$ --- конечнопорождённая $k$-алгебра, и $A$ --- поле. Тогда $A$ --- конечное расширение $k$.
 \end{proposition}
 \begin{proof}
-    $k \subset k[t_1, \hdots, t_n] \subset A$. Предположим, что утверждение не выполнено, то есть $n > 0$.
-
-    Расмотрим идеал $I \subset k[t_1, \hdots, t_n]$, $I \neq (0), (1)$. Поскольку $A$ --- поле,
-    \begin{equation*}
-        IA = \left\{ \sum_{j = 1}^{m} i_j a_j \big| i_j \in I, a_j \in A, m \in \N \right\} = A
-    \end{equation*}
-    Рассмотрим элементы $\{ u_1, \hdots, u_n \}$, которые порождают $A$ как $k[t_1, \hdots, t_n]$-модуль. $IA = A$, поэтому каждое $u_i$ представляется в виде конечной суммы $u_i = \sum a_{ij} v_{ij}$, $a_{ij} \in I, v_{ij} \in A$.
-
-    В то же время $\{u_1, \hdots, u_n\}$ порождают всё $A$, в том числе и элементы $v_{ij}$.
-    \begin{equation*}
-        u_i = \sum a_{ij} v_{ij} = \sum a_{ij} \left( \sum b_{kj} u_{k} \right) \Ra u_i = \sum d_{ij} u_j, \quad d_{ij} \in I \subset k[t_1, \hdots, t_n]
-    \end{equation*}
-    Итого, получаем равенство
-    \begin{equation*}
-        \begin{pmatrix}
-            1 - d_{11} & -d_{12} & \cdots & -d_{1n} \\
-            -d_{21} & 1 - d_{22} & \cdots & -d_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            -d_{n1} & -d_{n2} & \cdots & 1 - d_{nn}
-        \end{pmatrix}
-        \begin{pmatrix}
-            u_1 \\ u_2 \\ \vdots \\ u_n
-        \end{pmatrix}
-        = M u = 0
-    \end{equation*}
-    Обозначим $D = \det M$. С одной стороны, $M u = 0 \Ra D = 0$. С другой стороны, если расписать определитель по определению, то получится, что $D = 1 + S$, где $S \in I$. $0 = D = 1 + S \Ra S = -1 \in I$, что приводит к противоречию, ведь $I \neq (1)$. 
+    $k \subset k[t_1, \hdots, t_n] \subset A$. Докажем, что $k[t] = k[t_1, \hdots, t_n]$ --- поле.
+    
+    Пусть $x \in k[t] \subseteq A$, тогда $x^{-1}$ --- корень унитального многочлена над $k[t]$ (по теореме Гамильтона-Кэли для $\cdot x^{-1} \in \End_{k[t]}A$), т. е. $x^{-n} + a_{n - 1}x^{-(n - 1)} + \ldots + a_0 = 0$, умножая на $x^{n - 1}$, получаем, что $x^{-1} \in k[t]$.
 \end{proof}
 
 Пусть поле $k$ алгебраически замкнуто. Оказывается, все максимальные идеалы в $k[t_1, \hdots, t_n]$ имеют конкретный вид.
 
 \begin{theorem}
-    $k = \bar{k}$, $\m \subset k[t_1, \hdots, t_n]$ --- максимальный идеал тогда и только тогда, когда найдутся некоторые $a_i \in k$ такие, что
+    $k$ алгебраически замкнуто, $\m \subset k[t_1, \hdots, t_n]$ --- максимальный идеал тогда и только тогда, когда найдутся некоторые $a_i \in k$ такие, что
     \begin{equation*}
         \m = (t_1 - a_1, \hdots, t_n - a_n)
     \end{equation*}
@@ -898,7 +882,7 @@ $G$ называется простой, если $G$ не содержит не
     \end{equation*}
     то есть добавить $g$ с сохранением собственности идеала не получится.
 
-	$\Ra$: Если $\m$ максимален, то $k \subset k[t_1, \hdots, t_n] / \m = A$ --- поле. При этом $A$ конечно порождается $\bar{t}_i$ как $k$-алгебра. Тогда, по условно доказанному утверждению выше, $A / k$ --- конечное расширение, и, поскольку $k = \bar{k}$, $A = k$. Но если $A = k$, то
+	$\Ra$: Если $\m$ максимален, то $k \subset k[t_1, \hdots, t_n] / \m = A$ --- поле. При этом $A$ конечно порождается $\bar{t}_i$ как $k$-алгебра. Тогда, из утверждения выше, $A / k$ --- конечное расширение, и, поскольку $k$ алгебраически замкнуто, $A = k$. Но если $A = k$, то
     \begin{equation*}
 	\forall \bar{t}_i \exists a_i \in A = k \left( \bar{t}_i - a_i = 0 \right) \Ra t_i - a_i \in \m \Ra (t_1 - a_1, \hdots, t_n - a_n) \subset \m
     \end{equation*}
@@ -906,10 +890,10 @@ $G$ называется простой, если $G$ не содержит не
 \end{proof}
 
 \begin{proposition}
-    $R = k [t_1, \hdots, t_n]$, $f_1, \hdots, f_m \in R$. Тогда следующие утверждения эвивалентны:
+    $k$ алгебраически замкнуто. $R = k [t_1, \hdots, t_n]$, $f_1, \hdots, f_m \in R$. Тогда следующие утверждения эвивалентны:
     \begin{enumerate}
-        \item $(f_1, \hdots, f_n) = (1)$
-        \item Система $\forall i \in \{1, \hdots, m\} (f_i(t_1, \hdots, t_n) = 0)$ не имеет решений
+        \item $(f_1, \hdots, f_m) = (1)$
+        \item Система $\{f_i(t_1, \hdots, t_n) = 0\}_{i = 1}^m$ не имеет решений
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -919,7 +903,7 @@ $G$ называется простой, если $G$ не содержит не
 \end{proof}
 
 \begin{theorem}[Гильберта о нулях]
-    $R = k[t_1, \hdots, t_m]$, $f_1, \hdots, f_n \in R$, $h \in R$, $k = \overline{k}$. Также известно, что если $a_1, \hdots, a_m \in k$ и $\forall i (f_i(a_1, \hdots, a_m) = 0)$, то и $h(a_1, \hdots, a_m) = 0$. Тогда $\exists s \left( h^s \in (f_1, \hdots, f_n) \right)$.
+    $R = k[t_1, \hdots, t_m]$, $f_1, \hdots, f_n \in R$, $h \in R$, $k$ алгебраически замкнуто. Также известно, что если $a_1, \hdots, a_m \in k$ и $\forall i (f_i(a_1, \hdots, a_m) = 0)$, то и $h(a_1, \hdots, a_m) = 0$. Тогда $\exists s \left( h^s \in (f_1, \hdots, f_n) \right)$.
 \end{theorem}
 \begin{remark}
     Обратное утверждение очевидно.
@@ -947,9 +931,9 @@ $G$ называется простой, если $G$ не содержит не
 Далее считаем кольцо $A$ коммутативным.
 
 \begin{definition}[Размерность кольца]
-    $\dim A$ --- максимальное $n$ такое, что найдутся $p_0, \hdots, p_n$ --- простые идеалы такие, что
+    $\dim A$ --- максимальное $n$ такое, что найдутся $\p_0, \hdots, \p_n$ --- простые идеалы такие, что
     \begin{equation*}
-        p_0 \subsetneq p_1 \subsetneq \hdots \subsetneq p_n \subsetneq A
+        \p_0 \subsetneq \p_1 \subsetneq \hdots \subsetneq \p_n \subsetneq A
     \end{equation*}
     Если максимума не существует, говорят,  что $\dim A = +\infty$.
 \end{definition}
@@ -975,6 +959,7 @@ $G$ называется простой, если $G$ не содержит не
     Докажите, что $\dim \Z[x] = 2$.
 \end{problem}
 
+Доказательство следующей теоремы нетривиально и в курсе не приводится.
 \begin{theorem}
     $A$ --- нётерево $\Ra \dim A[x] = 1 + \dim A$.
 \end{theorem}
@@ -1028,7 +1013,7 @@ $G$ называется простой, если $G$ не содержит не
 
 $U$ --- векторное пространство размерности $n$,
 $$\bigwedge U = F \oplus U \oplus \bigwedge^2 U \oplus \ldots \oplus \bigwedge^n U,$$
-и если $\{e_1, e_2, \ldots, e_n\}$ --- базис $U$, то $\bigwedge^2 U$ порождается $e_{i_1}, e_{i_2}, \ldots, e_{i_m}$, где $i_1 < i_2 < \ldots < i_m$. Докажем теперь независимость. Докажем для начала для случая $m = n$. Пусть $e_1 \wedge e_2 \wedge \ldots \wedge e_n = 0$, иначе говоря, $e_1 \otimes e_2 \otimes \ldots \otimes e_n = \sum a(\ldots \otimes u \otimes u \otimes \ldots)$. Рассмотрим отображение $U^{\times n} \rightarrow F: (u_1, u_2, \ldots, u_n) \mapsto \det((a_{ij})$, где $u_i = \sum_{j = 1}^n a_{ij}e_j$, это отображение полилинейно, так что оно пропускается через тензорную степень, но $\det(e_1, e_2, \ldots, e_n) = 1$. Противоречие. Вернёмся теперь к общему случаю. Пусть $e_I := e_{i_1} \wedge e_{i_2} \wedge \ldots \wedge e_{i_m}$, где $I = \{i_1, i_2, \ldots, i_m\}$. 
+и если $\{e_1, e_2, \ldots, e_n\}$ --- базис $U$, то $\bigwedge^m U$ порождается $e_{i_1} \wedge e_{i_2} \wedge \ldots \wedge e_{i_m}$, где $i_1 < i_2 < \ldots < i_m$. Докажем теперь независимость. Докажем для начала для случая $m = n$. Пусть $e_1 \wedge e_2 \wedge \ldots \wedge e_n = 0$, иначе говоря, $e_1 \otimes e_2 \otimes \ldots \otimes e_n = \sum a(\ldots \otimes u \otimes u \otimes \ldots)$. Рассмотрим отображение $U^{\times n} \rightarrow F: (u_1, u_2, \ldots, u_n) \mapsto \det((a_{ij})$, где $u_i = \sum_{j = 1}^n a_{ij}e_j$, это отображение полилинейно, так что оно пропускается через тензорную степень, но $\det(e_1, e_2, \ldots, e_n) = 1$. Противоречие. Вернёмся теперь к общему случаю. Пусть $e_I := e_{i_1} \wedge e_{i_2} \wedge \ldots \wedge e_{i_m}$, где $I = \{i_1, i_2, \ldots, i_m\}$. 
 $$\sum_{|I| = m} a_I e_I = 0$$
 Докажем, что $a_I = 0$, где $I = \{1, 2, \ldots, m\}$, этого очевидно достаточно из симметрии.
 Домножим равенство на $e_{m + 1} \wedge e_{m + 2} \wedge \ldots \wedge e_n$, получим
@@ -1036,7 +1021,7 @@ $a_{\{1, 2, \ldots, m\}}e_1 \wedge e_2 \wedge \ldots \wedge e_m = 0$, т. е. $a
 
 Отсюда сразу получаем $\dim \bigwedge^m U = \binom{n}{m}$, $\dim \bigwedge U = 2^n$.	
 
-$e_I \wedge e_J = (-1)^{\varepsilon{i_1, i_2, \ldots, i_k, j_1, j_2, \ldots, j_l}}e_{I \cup J}$
+$e_I \wedge e_J = (-1)^{\sgn(i_1, i_2, \ldots, i_k, j_1, j_2, \ldots, j_l)}e_{I \cup J}$
 
 \begin{proposition}
 $\dim U = n$, $u_1, u_2, \ldots, u_m \in U$, $m < n$ линейно зависимы тогда и только тогда, когда $u_1 \wedge u_2 \wedge \ldots \wedge u_m = 0$
@@ -1048,7 +1033,7 @@ $\dim U = n$, $u_1, u_2, \ldots, u_m \in U$, $m < n$ линейно зависи
 \end{proof}
 
 \begin{theorem}[Формула Бине--Коши]
-Пусть $B \in \Mat_{k \times n}, C \in \Mat_{n \times k}$, тогда $\det(BC) = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]})$.
+Пусть $B \in \Mat_{k \times n}, C \in \Mat_{n \times k}$, тогда $\det(BC) = \sum_{0 \le i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]})$, где матрица $C^{[i_1 < i_2 <\ldots < i_k]}$ составлена из $i_j$-ых строк матрицы $C$, $B_{[i_1 < i_2 <\ldots < i_k]}$ --- то же самое для столбцов.
 \end{theorem}
 \begin{proof}
 Если $k > n$, $\det(BC) = 0$, если $k = n$, то $\det(BC) = \det(B) \det(C)$. Если теперь $k \leq n$, пусть $U$ --- векторное пространство размерности $k$, $e_1, e_2, \ldots, e_k$ --- базис.
@@ -1058,11 +1043,11 @@ $$v_i = \sum_{j = 1}^n a_{ji}e_j$$
 $$v_1 \wedge v_2 \wedge \ldots \wedge v_k = \det(BC) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
 $$v_1 \wedge v_2 \wedge \ldots \wedge v_k = (c_{11} u_1 + c_{21} u_2 + \ldots + c_{n1} u_n) \wedge (c_{12} u_1 + c_{22} u_2 + \ldots + c_{n2} u_n) \wedge \ldots \wedge$$ 
 $$(c_{1n}u_1 + c_{2n}u_2 + \ldots + c_{nn} u_n) =$$
-$$ = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det\begin{pmatrix} c_{i_1 1} & c_{i_1 2} & \ldots & c_{i_1 k} \\ c_{i_2 1} & c_{i_2 2} & \ldots & c_{i_2 k} \\ \ldots & \ldots & \ldots  & \ldots \\ c_{i_k 1} & c_{i_k 2} & \ldots & c_{i_k k} \end{pmatrix} u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} :=$$
-$$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} =$$
+$$ = \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det\begin{pmatrix} c_{i_1 1} & c_{i_1 2} & \ldots & c_{i_1 k} \\ c_{i_2 1} & c_{i_2 2} & \ldots & c_{i_2 k} \\ \ldots & \ldots & \ldots  & \ldots \\ c_{i_k 1} & c_{i_k 2} & \ldots & c_{i_k k} \end{pmatrix} u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} =$$
+$$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) u_{i_1} \wedge u_{i_2} \wedge \ldots \wedge u_{i_k} =$$
 $$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]})\cdot$$
-$$\cdot \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k :=$$
-$$:= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]}) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
+$$\cdot \det\begin{pmatrix} b_{1 i_1} & b_{1 i_2} & \ldots & b_{1, i_k} \\ b_{2 i_1} & b_{2 i_2} & \ldots & b_{2, i_k} \\ \ldots & \ldots & \ldots  & \ldots \\ b_{k i_1} & b_{k i_2} & \ldots & b_{k, i_k} \end{pmatrix} e_1 \wedge e_2 \wedge \ldots \wedge e_k =$$
+$$= \sum_{i_1 < i_2 < \ldots < i_k \leq n} \det(C^{[i_1 < i_2 <\ldots < i_k]}) \det(B_{[i_1 < i_2 <\ldots < i_k]}) e_1 \wedge e_2 \wedge \ldots \wedge e_k$$
 \end{proof}
 
 \begin{definition}
@@ -1095,13 +1080,13 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
 \end{equation*}
 Заметим, что при раскрытии скобок слагаемые с пересекающимимся наборами индексов обнулятся. Тогда два набора индексов можно объединить в один набор размера $n$. Поскольку всего базисных векторов $n$, второй набор в таком случае будет в точности дополнением первого. Красткости ради обозначим набор $i_1 < \hdots , i_k$ как $I$, а множество $\{1, \hdots, n\}$ как $[n]$.
 \begin{equation*}
-	u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \sum_{\substack{I \subset [n] \\ |I| = k}} \det(B^I) \det(C^{[n] \setminus I}) \cdot e_{[n]} \cdot (-1)^{\sigma(I, [n] \setminus I)}
+	u_1 \wedge \hdots \wedge u_k \wedge v_1 \wedge \hdots \wedge v_{n-k} = \sum_{\substack{I \subset [n] \\ |I| = k}} \det(B^I) \det(C^{[n] \setminus I}) \cdot e_{[n]} \cdot (-1)^{\sgn(I, [n] \setminus I)}
 \end{equation*}
-В этом равенстве $[n] \setminus I$ рассматривается как упорядоченный набор, а $\sigma(I, [n] \setminus I)$ означает знак перестановки. Множитель $(-1)^{\sigma(I, [n] \setminus I)}$ появляется, потому что, хотя наборы $I$, $[n] \setminus I$ упорядочены сами по себе, они не упорядочены в совокупности, из-за чего в $e_I \wedge e_{[n] \setminus I}$ базисные вектора могут стоять в неправильном порядке.
+В этом равенстве $[n] \setminus I$ рассматривается как упорядоченный набор. Множитель $(-1)^{\sgn(I, [n] \setminus I)}$ появляется потому, что, хотя наборы $I$, $[n] \setminus I$ упорядочены сами по себе, они не упорядочены в совокупности, из-за чего в $e_I \wedge e_{[n] \setminus I}$ базисные вектора могут стоять в неправильном порядке.
 
-Выясним, чему же равно $\sigma(I, [n] \setminus I)$. Для этого вычислим количество инверсий. Поскольку наборы $I$, $[n] \setminus I$ упорядочены сами по себе, все инверсии в перестановке $I, [n] \setminus I$ имеют вид $I \ni a > b \in [n] \setminus I$. Потенциально, инверсиями с элементом $i_s \in I$ могут быть все пары $(i_s, 1), (i_s, 2), \hdots, (i_s, i_s - 1)$. Но некоторые вторые элементы из этих пар также лежат в $I$, и потому инверсий не образуют; таких элементов, поскольку $I$ упорядочено, ровно $s - 1$. Таким образом, количество инверсий с элементом $i_s$ равно $(i_s - 1) - (s - 1) = i_s - s$.
+Выясним, чему же равно $\sgn(I, [n] \setminus I)$. Для этого вычислим количество инверсий. Поскольку наборы $I$, $[n] \setminus I$ упорядочены сами по себе, все инверсии в перестановке $I, [n] \setminus I$ имеют вид $I \ni a > b \in [n] \setminus I$. Потенциально, инверсиями с элементом $i_s \in I$ могут быть все пары $(i_s, 1), (i_s, 2), \hdots, (i_s, i_s - 1)$. Но некоторые вторые элементы из этих пар также лежат в $I$, и потому инверсий не образуют; таких элементов, поскольку $I$ упорядочено, ровно $s - 1$. Таким образом, количество инверсий с элементом $i_s$ равно $(i_s - 1) - (s - 1) = i_s - s$.
 \begin{gather*}
-    \sigma(I, [n] - I) = \sum_{s = 1}^{k} i_s - s = \sum_{s = 1}^{k} i_s - \frac{k(k+1)}{2} \\
+    \sgn(I, [n] - I) = \sum_{s = 1}^{k} i_s - s = \sum_{s = 1}^{k} i_s - \frac{k(k+1)}{2} \\
     \det(A) = \sum_{\substack{I \subset [n] \\ |I| = k}} (-1)^{\sum_{s = 1}^{k} i_s - \frac{k(k+1)}{2}} \det(B^I) \det(C^{[n] \setminus I})
 \end{gather*}
 
@@ -1125,11 +1110,11 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
 \end{problem}
 
 \begin{proposition}[Универсальное свойство внешней алгебры]
-    Пусть $U, V$ --- векторные пространства, $f: U^n \to V$ полилинейно и кососимметрично, $\pi: U^n \to \bigwedge^p U$ сопоставляет элементу $(u_1, \hdots, u_n)$ элемент $u_1 \wedge \hdots \wedge u_n$. Тогда
+    Пусть $U, V$ --- векторные пространства, $f: U^n \to V$ полилинейно и кососимметрично, $\pi: U^n \to \bigwedge^n U$ сопоставляет элементу $(u_1, \hdots, u_n)$ элемент $u_1 \wedge \hdots \wedge u_n$. Тогда
     \begin{equation*}
         \begin{tikzcd}[column sep=small]
             U^n \arrow{rr}{f} \arrow{dr}[below left]{\pi} & & V \\
-            & \bigwedge^p U \arrow[dashed]{ur}[below right]{! \exists}
+            & \bigwedge^n U \arrow[dashed]{ur}[below right]{! \exists}
         \end{tikzcd}
     \end{equation*}
 \end{proposition}
@@ -1153,7 +1138,7 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
     Значит, отображение, полученное из универсального свойства тензорного произведения, действительно пропускается через факторизацию.
 \end{proof}
 
-Пусть $U$ --- векторное пространство над $F$, $\chr F \neq 2$. Поинтересуемся, какие элементы в $\bigwedge^n U$ разложимы. Рассмотрим случай $n = 2$.
+Пусть $U$ --- векторное пространство над $F$, $\chr F \neq 2$. Попытаемся выяснить, какие элементы в $\bigwedge^n U$ разложимы. Рассмотрим случай $n = 2$.
 
 \begin{proposition}
     $w \in \bigwedge^2 U$. Тогда $w$ разложимо $\iff$ $w \wedge w = 0 \in \bigwedge^4 U$.
@@ -1177,7 +1162,7 @@ $\dim U = n$, $\omega \in \bigwedge^m U$ называется разложимы
         \end{cases}
     \end{equation*}
 
-    По индукционному предположению, из $w' \in \bigwedge^2 (\langle e_1, \hdots, e_{n-1} \rangle)$ следует, что $w' \wedge w' = 0 \iff w' = x \wedge y$.
+    По индукционному предположению, т. к. $w' \in \bigwedge^2 (\langle e_1, \hdots, e_{n-1} \rangle)$, и $w' \wedge w' = 0, w' = x \wedge y$.
     \begin{equation*}
         \begin{cases}
             w' = x \wedge y \\
@@ -1236,11 +1221,11 @@ $F$ --- вложение.
 $\dim \ker \Phi \le k$ и равенство достигается тогда и только тогда, когда $\omega$ разложим.
 \end{lemma}
 \begin{proof}
-	Пусть $\dim \ker \Phi = r$, $e_1, e_2, \ldots, e_n$ --- базис $V$, причём первые $r$ лежат в $\ker \Phi$. $\omega = \sum \omega_I e_I$. Для $i \le r$, $e_i \wedge \omega = \sum \omega_I e_I \wedge e_i = 0$, значит если $i \notin I$, $\omega_i = 0$, ведь $e_i \wedge e_I$, для $I \not \ni i$ составляют базис. Значит для любого $I$, т. ч. $\omega_I \neq 0$, $i \in I$ для $i  \le r$, значит $r \le k$. 
+	Пусть $\dim \ker \Phi = r$, а $e_1, e_2, \ldots, e_n$ --- базис $V$, причём первые $r$ лежат в $\ker \Phi$. $\omega = \sum \omega_I e_I$. Для $i \le r$, $e_i \wedge \omega = \sum \omega_I e_I \wedge e_i = 0$, значит если $i \notin I$, $\omega_i = 0$, ведь $e_i \wedge e_I$, для $I \not \ni i$ составляют базис. Значит для любого $I$, т. ч. $\omega_I \neq 0$, $i \in I$ для $i  \le r$, значит $r \le k$. 
 Если теперь достигается равенство, $k = r \le |I \cap I'|$. В обратную сторону утверждение очевидно.
 \end{proof}
 
-Из леммы выше сразу же получаем, что $\omega$ разложим тогда и только тогда, когда $\rk \Phi \le n - k$, ведь $\dim \ker \Phi = n - \dim \im \Phi  = n - \rk \Phi$. Но это условие уже задаётся системой однородных уравнений от коэффициентов матрицы $\Phi$, ведь $\rk \Phi \le n - k$ тогда и только тогда, когда все миноры размера $n - k + 1$ равны 0. Но $e_i \wedge e_I$ либо ноль, либо базисный с точностью до знака, т. е. если $\omega = \sum a_I e_I$, коэффициенты матрицы, в частности, являются линейными комибинациями $a_I$, так что полученная система --- система однородных уравнений от $a_I$.
+Из леммы выше сразу же получаем, что $\omega$ разложим тогда и только тогда, когда $\rk \Phi \le n - k$, ведь $\dim \ker \Phi = n - \dim \im \Phi  = n - \rk \Phi$. Но это условие уже задаётся системой однородных уравнений от коэффициентов матрицы $\Phi$, ведь $\rk \Phi \le n - k$ тогда и только тогда, когда все миноры размера $n - k + 1$ равны 0. Но $e_I \wedge e_J$ либо ноль, либо базисный с точностью до знака, т. е. если $\omega = \sum a_I e_I$, коэффициенты матрицы $\Phi$ являются линейными комибинациями $a_I$, так что полученная система --- система однородных уравнений от $a_I$.
 
 Отсюда, т. к. подпространства соответсвуют разложимым элементам, образ вложения Плюккера замкнут.
 
@@ -1252,27 +1237,27 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
 \end{problem}
 
 \begin{definition}[Категория]
-    Категория $\mathcal{C}$ состоит из класса объектов $\Ob_{\mathcal{C}}$, для каждой пары $A, B$ объектов из которого определён класс морфизмов $\Mor(A, B)$ со следующими свойствами:
+    Категория $\mathcal{C}$ состоит из класса объектов $\Ob_{\mathcal{C}}$, и классов морфизмов $\Mor(A, B)$, определённых для каждой пары $A, B \in \Ob_{\mathcal{C}}$ и обладающих следующими свойствами:
     \begin{enumerate}
         \item $\Mor (A_1, B_1) \inter \Mor(A_2, B_2) \neq \varnothing \Ra A_1 = A_2, B_1 = B_2$
-        \item $\forall A \in \Ob \exists \id \in \Mor(A, A)$
-        \item Определено отображение композиции $\circ : \Mor(A, B) \times \Mor(B, C) \to \Mor(A, C)$
-        \item Композиция ассоциативна, т.е. $A \overset{\varphi}{\to} B \overset{\psi}{\to} C \overset{\tau}{\to} D \Ra \varphi \circ (\psi \circ \tau) = (\varphi \circ \psi) \circ \tau$
-        \item $\forall \varphi (\id \circ \varphi = \varphi \circ \id = \varphi)$
+        \item $\forall A \in \Ob_{\mathcal{C}} \exists \id_A \in \Mor(A, A)$
+        \item Определено отображение композиции $\circ : \Mor(B, C) \times \Mor(A, B) \to \Mor(A, C)$
+        \item Композиция ассоциативна, т.е. $A \xrightarrow{\varphi} B \xrightarrow{\psi} C \xrightarrow{\tau} D \Ra \tau \circ (\psi \circ \varphi) = (\tau \circ \psi) \circ \varphi$
+        \item $\forall \varphi \in \Mor(A, B) \quad \id_B \circ \varphi = \varphi \circ \id_A = \varphi$
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[Произведение объектов]
-    Пусть заданы морфизмы $\varphi_1 \in \Mor(A_1, R)$, $\varphi_2 \in \Mor(A_2, R)$. Произведением объектов $A_1, A_2$ над объектом $R$ называется объект $A_1 \times_R A_2$ вместе с морфизмами $pr_1 \in \Mor(A_1 \times_R A_2, A_1)$, $pr_2 \in \Mor(A_1 \times_R A_2, A_2)$ такой, что для любого объекта $T$ и морфизмов $\tau_1 \in \Mor(T, A_1)$, $\tau_2 \in \Mor(T, A_2)$ следующая диаграмма коммутирует.
+\begin{definition}[Расслоенное произведение объектов]
+    Пусть заданы морфизмы $\varphi_1 \in \Mor(A_1, R)$, $\varphi_2 \in \Mor(A_2, R)$. Расслоенным произведением объектов $A_1, A_2$ над объектом $R$ называется объект $A_1 \times_R A_2$ вместе с морфизмами $pr_1 \in \Mor(A_1 \times_R A_2, A_1)$, $pr_2 \in \Mor(A_1 \times_R A_2, A_2)$ такой, что для любого объекта $T$ и морфизмов $\tau_1 \in \Mor(T, A_1)$, $\tau_2 \in \Mor(T, A_2)$ таких, что $\varphi_1 \circ \tau_1 = \varphi_2 \circ \tau_2$, существует единственный морфизм $f \in \Mor(T, A_1 \times_R A_2)$ такой, что следующая диаграмма коммутирует:
     \begin{equation*}
     \begin{tikzcd}
-        & T \ar[dashed]{d}{\exists !} \ar[bend right=20, swap]{ddl}{\tau_1} \ar[bend left=20]{ddr}{\tau_2} & \\
+        & T \ar[dashed]{d}{f} \ar[bend right=20, swap]{ddl}{\tau_1} \ar[bend left=20]{ddr}{\tau_2} & \\
         & A_1 \times_R A_2 \ar{dl}{pr_1} \ar[swap]{dr}{pr_2} & \\
         A_1 \ar{dr}{\varphi_1} & & A_2 \ar[swap]{dl}{\varphi_2} \\
         & R &
     \end{tikzcd}
     \end{equation*}
-    Это называется универсальным свойством произведения.
+    Это называется универсальным свойством расслоенного произведения.
 \end{definition}
 
 \begin{remark}
@@ -1282,15 +1267,15 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
 \end{remark}
 
 \begin{definition}[Изоморфизм]
-    Изоморфизм --- обратимый морфизм.
+    Морфизм $f \in \Mor(A, B)$ называется изоморфизмом, если существует морфизм $g \in \Mor(B, A)$ такой, что $f \circ g = \id_B$, и $g \circ f = \id_A$.
 \end{definition}
 
 \begin{proposition}
     \label{123}
-    Произведение объектов единственно с точностью до изоморфизма.
+    Расслоенное произведение объектов единственно с точностью до изоморфизма.
 \end{proposition}
 \begin{proof}
-    Пусть есть два объекта $P, P'$, для которых диаграмма произведения коммутирует. Тогда можно составить следующую коммутативную диаграмму:
+    Пусть $(P, pr_1, pr_2)$ и $(P', pr_1', pr_2')$ --- расслоенные произведения. Тогда можно составить следующую коммутативную диаграмму:
     \begin{equation*}
     \begin{tikzcd}
         & P \ar[dashed]{d}{\alpha} \ar[bend right=20, swap]{dddl}{pr_1} \ar[bend left=20]{dddr}{pr_2} & \\
@@ -1318,25 +1303,25 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
     Вообще говоря, термин с приставкой "<ко-"> обычно определяется также как и тот же термин без неё, только в определении нужно обратить все стрелки.
 \end{remark}
 
-\begin{definition}[Копроизведение]
-    Пусть заданы морфизмы $\varphi_1 \in \Mor(R, A_1)$, $\varphi_2 \in \Mor(R, A_2)$. Тогда копроизведение $A_1, A_2$ над $R$ --- объект $A_1 \oplus_R A_2$ вместе с морфизмами $i_1 \in \Mor(A_1, A_1 \oplus_R A_2)$, $i_2 \in \Mor(A_2, A_1 \oplus_R A_2)$ такой, что всегда коммутирует диаграмма
+\begin{definition}[Расслоенное копроизведение]
+    Пусть задана пара морфизмов $\varphi_1 \in \Mor(R, A_1)$, $\varphi_2 \in \Mor(R, A_2)$. Тогда расслоенным копроизведением $A_1, A_2$ над $R$ называется объект $A_1 \coprod_R A_2$ вместе с морфизмами $i_1 \in \Mor(A_1, A_1 \coprod_R A_2)$, $i_2 \in \Mor(A_2, A_1 \coprod_R A_2)$ такой, что для любого объекта $T$ и морфизмов $\tau_1 \in \Mor(A_1, T)$, $\tau_2 \in \Mor(A_2, T)$ таких, что $\tau_1 \circ \varphi_1 = \tau_2 \circ \varphi_2$, существует единственный морфизм $f \in \Mor(A_1 \coprod_R A_2, T)$ такой, что следующая диаграмма коммутирует:
     \begin{equation*}
     \begin{tikzcd}
         & T & \\
-        & A_1 \oplus_R A_2 \ar[dashed]{u}{\exists !} & \\
+        & A_1 \coprod_R A_2 \ar[dashed]{u}{f} & \\
         A_1 \ar[swap]{ur}{i_1} \ar{uur}{\tau_1} & & A_2 \ar{ul}{i_2} \ar[swap]{uul}{\tau_2}  \\
         & R \ar[swap]{ul}{\varphi_1} \ar{ur}{\varphi_2} &
     \end{tikzcd}
     \end{equation*}
-    Это называется универсальным свойством копроизведения.
+    Это называется универсальным свойством расслоенного копроизведения.
 \end{definition}
 
 \begin{problem}
-    Докажите, что копроизведение единственно с точностью до изоморфизма.
+    Докажите, что расслоенное копроизведение единственно с точностью до изоморфизма.
 \end{problem}
 
 \begin{remark}
-    В качестве примера копроизведения рассмотрим его в категории модулей $\mathbf{Mod}$ (в ней морфизмы --- обычные гомоморфизмы модулей).
+    В качестве примера рассмотрим расслоенное копроизведение в категории модулей $\mathbf{Mod}$ (в ней морфизмы --- обычные гомоморфизмы модулей).
     \begin{equation*}
     \begin{tikzcd}
         & T & \\
@@ -1349,11 +1334,11 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
         A_1 \oplus_R A_2 = (A_1 \oplus A_2) / M, \quad M = {(\varphi_1(r), -\varphi_2(r)) | r \in R} \\
         i_1(a_1) = \overline{(a_1, 0)}, \quad i_2(a_2) = \overline{(0, a_2)}, \quad \psi((a_1, a_2)) = \tau_1(a_1) + \tau_2(a_2)
     \end{gather*}
-    Как и в случае произведения в категории множеств, коммутативность диаграммы проверяется элементарно.
+    Как и в случае расслоенного произведения в категории множеств, коммутативность диаграммы проверяется элементарно.
 \end{remark}
 
 \begin{remark}
-    Рассмотрим копроизведение в категории коммутативных колец с 1 (в ней морфизмы --- обычные гомоморфизмы коммутативных колец с 1). Заметим, что $\varphi_i \in \Mor(R, A_i)$ задаёт на $A_i$ структуру $R$-модуля. Далее под $A_1 \otimes A_2$ понимается $A_1 \otimes_R A_2$, т.е. тензорное произведение над кольцом $R$.
+    Рассмотрим расслоенное копроизведение в категории коммутативных колец с 1 (в ней морфизмы --- обычные гомоморфизмы коммутативных колец с 1). Заметим, что $\varphi_i \in \Mor(R, A_i)$ задаёт на $A_i$ структуру $R$-модуля. Далее под $A_1 \otimes A_2$ понимается $A_1 \otimes_R A_2$, т.е. тензорное произведение над кольцом $R$.
 
     Отображение
     \begin{equation*}
@@ -1382,7 +1367,7 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
         i_1(a_1) = a_1 \otimes 1, \quad i_2(a_2) = 1 \otimes a_2 \\
         (i_1 \circ \varphi_1)(r) = \varphi_1(r) \otimes 1 = (r \cdot 1) \otimes 1 = 1 \otimes (r \cdot 1) = 1 \otimes \varphi_2(r) = (i_2 \circ \varphi_2)(r)
     \end{gather*}
-	Отображение $\psi': A_1 \times A_2 \to T$, $\psi'((a_1, a_2)) = \tau_1(a_1) \tau_2(a_2)$ билинейно, а значит, задаёт отображение $\psi: A_1 \otimes A_2 \to T$, $\psi(a_1 \otimes a_2) = \tau_1(a_1) \tau_2(a_2)$. $\psi$ --- гомоморфизм модулей, гомоморфность(как коммутативных колец с 1) достаточно проверять для разложимых, ведь они всё порождают, а для них она верна по определению. Единственность есть, так как $\psi$ однозначно определено на разложимых.
+	Отображение $\psi': A_1 \times A_2 \to T$, $\psi'((a_1, a_2)) = \tau_1(a_1) \tau_2(a_2)$ билинейно, а значит, задаёт отображение $\psi: A_1 \otimes A_2 \to T$, $\psi(a_1 \otimes a_2) = \tau_1(a_1) \tau_2(a_2)$. $\psi$ --- гомоморфизм модулей, то, что $\psi$ --- гомоморфизм коммутативных колец с 1, достаточно проверять для разложимых, ведь они всё порождают, а для них она верна по определению. Единственность есть, так как $\psi$ однозначно определено на разложимых.
 
     Легко видеть, что полученная диаграмма коммутирует.
 \end{remark}
@@ -1398,6 +1383,10 @@ $$S(V) = k \oplus V \oplus (V \otimes V) \oplus \ldots \oplus V^{\otimes n} \opl
         X = \lim_{\substack{\leftarrow \\ i \in I}} X_i = \left\{ \left. a \in \prod_{i \in I} X_i \right| \forall i \leq j (a_i = f_{ij}(a_j)) \right\}
     \end{equation*}
 \end{definition}
+
+\begin{remark}
+    Часто от $I$ требуют направленности (для любых $i, j \in I$ существует $k \in I$ такой, что $i, j \le k$). 
+\end{remark}
 
 На самом деле, проективную систему можно воспримнимать как функтор из категории $I$(где объекты --- элементы, стрелки --- отношение порядка) в категорию абелевых групп, так что определение проективного предела несложно перенести на категорию колец.
 
@@ -1433,7 +1422,7 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 	Докажите, что если $X_i$ --- множества и $0 < |X_i| < \infty$, для всех $i$, и $I = \mathbb{N}$, то $\projlim X_i \neq \varnothing$.
 \end{problem}
 
-Пусть есть категории $A, B$ и функторы $\F$ из $A$ в $B$ и $\G$ из $B$ в $A$. И для любых $X, X' \in \mathrm{Ob}(A)$, $f \in \Mor(X', X)$ и $Y, Y' \in \mathrm{Ob}(B)$, $g \in \Mor(Y, Y')$ диаграмма
+Пусть есть категории $\A, \B$ и функторы $\F: \A \rightarrow \B$ и $\G: \B \rightarrow \A$. И для любых $X, X' \in \Ob(\A)$, $f \in \Mor(X', X)$ и $Y, Y' \in \Ob(\B)$, $g \in \Mor(Y, Y')$ диаграмма
 
 \begin{equation*}
 \begin{tikzcd}
@@ -1444,7 +1433,7 @@ $(a_ip^i + a_{i + 1}p^{i + 1} + \ldots)(b_j p^j + b_{j + 1} p^{j + 1} + \ldots) 
 коммутативна. Тогда $\F, \G$ называются сопряжёнными, $\F$ --- левый сопряжённый к $\G$, $\G$ --- правый сопряжённый к $\F$.
 
 \begin{example}
-	$\F: \mathrm{Groups} \rightarrow k\operatorname{-alg}: \G \rightarrow k[G]$, $\G: A \rightarrow A^*$. Докажем, что $\F$ и $\G$ сопряжены. $\Mor(k[G], A) \simeq \Mor(G, A^*)$. Ну действительно, отображение слева направо --- сужение, справа налево --- продолжение по линейности.
+	$\F: \mathrm{Groups} \rightarrow k\operatorname{-alg}: G \mapsto k[G]$, $\G: A \mapsto A^*$. Докажем, что $\F$ и $\G$ сопряжены. $\Mor(k[G], A) \simeq \Mor(G, A^*)$. Ну действительно, отображение слева направо --- сужение, справа налево --- продолжение по линейности.
 \end{example}
 
 \begin{example}
