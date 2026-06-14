@@ -428,16 +428,17 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 	Найти неприводимые представления $Q_8$
 \end{problem}
 
-\begin{remark}
-    Обозначим $A_i = L_i^{d_i}$. Тогда, как мы уже знаем, $k[G] = A_1 \times \hdots \times A_s$. Обозначим $A = A_i$. $A \simeq L^d$ как $G$-модуль. $L$ --- неприводимый $G$-модуль. Тогда есть следующая цепочка изоморфизмов:
-    \begin{equation*}
-        A \simeq \End_A(A)^o = \End_A(L^d)^o \simeq M_d(\End_A(L))^o
-    \end{equation*}
-    Обозначим $\tilde{D} = \End_A(L)$. Тогда $M_d(\tilde{D})^o \simeq M_d(\tilde{D}^o)$, изоморфизмом является транспонирование матрицы. Для краткости обозначим $D = \tilde{D}^o$. Используя изоморфизмы выше, получаем
-    \begin{equation*}
-        k[G] \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(\tilde{D_i})^o \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(D_i)
-    \end{equation*}
-\end{remark}
+Обозначим $A_i = L_i^{d_i}$. Тогда, как мы уже знаем, $k[G] = A_1 \times \hdots \times A_s$. Обозначим $A = A_i$. $A \simeq L^d$ как $G$-модуль. $L$ --- неприводимый $G$-модуль. Тогда есть следующая цепочка изоморфизмов:
+\begin{equation*}
+    A \simeq \End_A(A)^o = \End_A(L^d)^o \simeq M_d(\End_A(L))^o
+\end{equation*}
+Обозначим $\tilde{D} = \End_A(L)$. Тогда $M_d(\tilde{D})^o \simeq M_d(\tilde{D}^o)$, изоморфизмом является транспонирование матрицы. Для краткости обозначим $D = \tilde{D}^o$. Используя изоморфизмы выше, получаем
+
+\begin{theorem}[Веддербёрн]
+\begin{equation*}
+    k[G] \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(\tilde{D_i})^o \simeq \underset{i=1}{\overset{s}{\prod}} M_{d_i}(D_i)
+\end{equation*}
+\end{theorem}
 
 \begin{proposition}
     Пусть $D = \End_A(L)$. Тогда $k \subset D$, $\dim_k(D) < \infty$. 
@@ -500,7 +501,7 @@ $\phi_{jk} = \pi_j \circ \phi \circ i_k$.
 \end{definition}
 
 \begin{remark}
-    Теперь знаем, что $\dim Z(k[G]) = s$, то есть число неприводимых представлений совпадает с числом классов сопряжённых элементов. % ???
+    Теперь знаем, что $\dim Z(k[G]) = s$, то есть число неприводимых представлений совпадает с числом классов сопряжённых элементов, ведь $Z(k[G]) \simeq \prod Z(M_{d_i}(D_i)) \simeq \prod Z(D_i) = k^s$
 \end{remark}
 
 \begin{remark}
